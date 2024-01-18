@@ -1,0 +1,55 @@
+.Hero_Body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("../images/HM.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 75vh;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  color: #010101;
+}
+.hero-text p {
+  font-size: 1.5rem;
+  color: #010101;
+  padding: 1rem;
+}
+
+.travel-btn {
+  text-decoration: none;
+  background: white;
+  color: black;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 1rem 2rem;
+}
+.travel-btn:hover {
+  background: #23c686;
+  color: white;
+}
+
+@media screen and (max-width: 700px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    padding: 0 0 2rem 0;
+  }
+  .travel-btn {
+    padding: 0.6rem 1.1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+}

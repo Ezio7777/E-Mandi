@@ -1,0 +1,108 @@
+.about_body {
+  background-color: transparent;
+  backdrop-filter: blur(60px);
+  border-radius: 50px;
+}
+
+/* Set images */
+
+.vedi {
+  background-image: url("../images/VG.jpeg");
+  background-size: contain;
+}
+.sunit {
+  background-image: url("../images/SP.jpeg");
+  background-size: contain;
+}
+.soumya {
+  background-image: url("../images/SG.jpeg");
+  background-size: contain;
+}
+
+/* All cards */
+
+.card5 {
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+
+  border: 2px solid #23c686;
+
+  /* box-shadow: 0px 0px 30px 1px rgba(158, 1, 255, 0.3); */
+  backdrop-filter: blur(30px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.card:hover {
+  border: 5px solid #23c686;
+  transform: scale(1.05);
+  box-shadow: 0px 0px 30px 1px #23c686;
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.card-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* about us caption */
+.h1 {
+  text-align: center;
+  font-size: 3.4rem;
+  line-height: 7rem;
+  font-weight: 800;
+  color: white;
+}
+
+.h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 5rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* about us page content */
+.h3 {
+  color: white;
+  text-align: center;
+  font-style: normal;
+  font-size: medium;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* img in card */
+.about-card-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* text on card */
+.text1 {
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .card5 {
+    margin: 20px;
+  }
+}

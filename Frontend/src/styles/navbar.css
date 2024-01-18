@@ -1,0 +1,42 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar_body {
+  background-color: #23c686;
+  margin: 0 30px;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 13px;
+  width: 95%;
+  position: fixed;
+  top: 20px;
+  z-index: 9999;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  margin-right: 3rem;
+}
+
+.simple_home_brand {
+  margin-right: 5rem;
+}
+
+.nav_txt_hov {
+  color: white;
+  cursor: pointer;
+}
+.nav_txt_hov:hover {
+  background: #fbfcf6;
+  color: #23c686;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav_txt_hov i {
+  padding: 10px;
+}
+@media screen and (max-width: 700px) {
+  .navbar_body {
+    margin-right: 20px;
+  }
+}
