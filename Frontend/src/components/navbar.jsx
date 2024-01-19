@@ -44,7 +44,7 @@ function Navbar() {
               <div class="container">
                 {/* Logo */}
                 <Link class="navbar-brand" to="/">
-                  Travelista
+                  E-Mandi
                 </Link>
 
                 {/* Toggle-Btn */}
@@ -144,7 +144,7 @@ function Navbar() {
               <div class="container">
                 {/* Logo */}
                 <Link class="navbar-brand simple_home_brand nav_txt" to="/">
-                  Travelista
+                  E-Mandi
                 </Link>
 
                 {/* Toggle-Btn */}
