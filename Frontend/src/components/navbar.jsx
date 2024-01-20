@@ -72,7 +72,7 @@ function Navbar() {
                       class="offcanvas-title nav_txt"
                       id="offcanvasNavbarLabel"
                     >
-                      Travelista
+                      E-Mandi
                     </h5>
                     <button
                       type="button"
@@ -107,7 +107,8 @@ function Navbar() {
                           class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
                           to="/contact"
                         >
-                          Contact
+                          <i class="fa-solid fa-store"></i>
+                          Market
                         </Link>
                       </li>
                       <li class="nav-item mx-2 nav_txt">
@@ -172,7 +173,7 @@ function Navbar() {
                       class="offcanvas-title  nav_txt"
                       id="offcanvasNavbarLabel"
                     >
-                      Travelista
+                      E-Mandi
                     </h5>
                     <button
                       type="button"
@@ -209,8 +210,8 @@ function Navbar() {
                           class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
                           to="/contact"
                         >
-                          <i class="fa-solid fa-id-badge"></i>
-                          Contact
+                          <i class="fa-solid fa-store"></i>
+                          Market
                         </Link>
                       </li>
                     </ul>

@@ -19,7 +19,8 @@
 }
 
 .simple_home_brand {
-  margin-right: 5rem;
+  margin-right: 4rem;
+  margin-left: 1rem;
 }
 
 .nav_txt_hov {
@@ -33,7 +34,7 @@
 }
 
 .nav_txt_hov i {
-  padding: 10px;
+  padding: 0px 10px 0px 0px;
 }
 @media screen and (max-width: 700px) {
   .navbar_body {

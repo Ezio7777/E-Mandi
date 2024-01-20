@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url("../images/HM.jpg") no-repeat center center fixed;
+  background: url("../images/Home2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,11 +18,11 @@
 }
 .hero-text h1 {
   font-size: 3rem;
-  color: #010101;
+  color: white;
 }
 .hero-text p {
   font-size: 1.5rem;
-  color: #010101;
+  color: white;
   padding: 1rem;
 }
 
