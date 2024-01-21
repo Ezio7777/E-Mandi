@@ -5,6 +5,7 @@ import Login from "./components/login.jsx";
 import Signup from "./components/signup";
 import ContactUs from "./components/contact_us";
 import About from "./components/about";
+import Market from "./components/market.jsx";
 
 import "./App.css";
 import {
@@ -65,6 +66,14 @@ function App() {
               <Navbar />
               <ContactUs />
               <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/market"
+          element={
+            <>
+              <Market />
             </>
           }
         />

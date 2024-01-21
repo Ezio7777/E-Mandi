@@ -105,7 +105,7 @@ function Navbar() {
                       <li class="nav-item mx-2 nav_txt">
                         <Link
                           class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
-                          to="/contact"
+                          to="/market"
                         >
                           <i class="fa-solid fa-store"></i>
                           Market
@@ -208,7 +208,7 @@ function Navbar() {
                       <li class="nav-item mx-2 nav_txt">
                         <Link
                           class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
-                          to="/contact"
+                          to="/market"
                         >
                           <i class="fa-solid fa-store"></i>
                           Market
