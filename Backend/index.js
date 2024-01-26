@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 //Port No.
-const port = 5000;
+const port = 4000;
 
 //Routes
 app.use("/api/auth", require("./routes/auth"));
