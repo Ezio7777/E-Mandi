@@ -52,10 +52,22 @@ const Signup = ({ loadUser, onRouteChange }) => {
   };
   return (
     <div className="container whole-body">
-      <div className="form-container">
+      <div className="form-container-signup">
         <p className="title">SignUp</p>
+
+        <div className="input-group mb-3 option_signup">
+          <select
+            className="form-select"
+            id="inputGroupSelect03"
+            aria-label="Example select with button addon"
+          >
+            <option value="vender">Farmer</option>
+            <option value="buyer">Buyer</option>
+          </select>
+        </div>
+
         <div className="input-group">
-          <label for="username">Username</label>
+          <label for="username">Name</label>
           <input
             type="text"
             name="username"
@@ -64,6 +76,17 @@ const Signup = ({ loadUser, onRouteChange }) => {
             onChange={onNameChange}
           />
         </div>
+        <div className="input-group">
+          <label for="username">Phone Number</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder=""
+            onChange={onNameChange}
+          />
+        </div>
+
         <div className="input-group">
           <label for="email">Email</label>
           <input
@@ -82,6 +105,36 @@ const Signup = ({ loadUser, onRouteChange }) => {
             id="password"
             placeholder=""
             onChange={onPasswordChange}
+          />
+        </div>
+        <div className="input-group">
+          <label for="username">State</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder=""
+            onChange={onNameChange}
+          />
+        </div>
+        <div className="input-group">
+          <label for="username">City</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder=""
+            onChange={onNameChange}
+          />
+        </div>
+        <div className="input-group">
+          <label for="username">PIN code</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder=""
+            onChange={onNameChange}
           />
         </div>
 

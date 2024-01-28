@@ -40,47 +40,50 @@ const Login = ({ loadUser, onRouteChange }) => {
   };
 
   return (
-    <div className="container  whole-body-login">
-      <div className="form-container">
-        <p className="title">Login</p>
+    <>
+      <div className="container  whole-body-login">
+        <div className="form-container">
+          <p className="title">Login</p>
 
-        <div className="input-group">
-          <label for="username">Email</label>
-          <input
-            type="email"
-            name="Email"
-            placeholder=""
-            onChange={onEmailChange}
-          />
-        </div>
-        <div className="input-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder=""
-            onChange={onPasswordChange}
-          />
-          <div className="forgot">
-            <a rel="noopener noreferrer" href="#">
-              Forgot Password ?
-            </a>
+          <div className="input-group">
+            <label for="username">Email</label>
+            <input
+              type="email"
+              name="Email"
+              placeholder=""
+              onChange={onEmailChange}
+            />
           </div>
-        </div>
-        <button className="sign" onClick={onSubmitLogIn}>
-          Log in
-        </button>
+          <div className="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder=""
+              onChange={onPasswordChange}
+            />
 
-        <p className="signup">
-          Don't have an account?
-          <Link rel="noopener noreferrer" to="/signup" class="">
-            {" "}
-            Sign up
-          </Link>
-        </p>
+            <div className="forgot">
+              <a rel="noopener noreferrer" href="#">
+                Forgot Password ?
+              </a>
+            </div>
+          </div>
+          <button className="sign" onClick={onSubmitLogIn}>
+            Log in
+          </button>
+
+          <p className="signup">
+            Don't have an account?
+            <Link rel="noopener noreferrer" to="/signup" class="">
+              {" "}
+              Sign up
+            </Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

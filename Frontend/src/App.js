@@ -36,7 +36,6 @@ function App() {
             <>
               <Navbar />
               <Signup />
-              <Footer />
             </>
           }
         />

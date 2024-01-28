@@ -222,14 +222,14 @@ function Navbar() {
                         class=" text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
                         to="/Login"
                       >
-                        Login
+                        <i class="fa-solid fa-right-to-bracket"></i>Login
                       </Link>
                       <Link
                         class="text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
                         id="signup"
                         to="/signup"
                       >
-                        Sign Up
+                        <i class="fa-solid fa-user-plus"></i>Sign Up
                       </Link>
                     </div>
                   </div>
