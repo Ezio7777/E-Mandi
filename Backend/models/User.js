@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   role: {
     type: String,
-    // required: true,
+    required: true,
   },
   name: {
     type: String,
@@ -12,7 +12,7 @@ const UserSchema = new Schema({
   },
   phno: {
     type: Number,
-    // required: true,
+    required: true,
   },
   email: {
     type: String,
@@ -25,15 +25,15 @@ const UserSchema = new Schema({
   },
   state: {
     type: String,
-    // required: true,
+    required: true,
   },
   city: {
     type: String,
-    // required: true,
+    required: true,
   },
   pin: {
     type: Number,
-    // required: true,
+    required: true,
   },
   date: {
     type: Date,

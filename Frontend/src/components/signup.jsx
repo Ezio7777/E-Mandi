@@ -5,9 +5,18 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Signup = ({ loadUser, onRouteChange }) => {
+  const [role, setRole] = useState("farmer");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [phno, setPhno] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [pin, setPin] = useState("");
+
+  const onRoleChange = (event) => {
+    setRole(event.target.value);
+  };
   const onEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -16,6 +25,18 @@ const Signup = ({ loadUser, onRouteChange }) => {
   };
   const onNameChange = (event) => {
     setName(event.target.value);
+  };
+  const onPhnoChange = (event) => {
+    setPhno(event.target.value);
+  };
+  const onStateChange = (event) => {
+    setState(event.target.value);
+  };
+  const onCityChange = (event) => {
+    setCity(event.target.value);
+  };
+  const onPinChange = (event) => {
+    setPin(event.target.value);
   };
   const navigate = useNavigate();
   const handleClick = () => {
@@ -26,9 +47,14 @@ const Signup = ({ loadUser, onRouteChange }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        role: role,
         email: email,
         password: password,
         name: name,
+        phno: phno,
+        state: state,
+        city: city,
+        pin: pin,
       }),
     });
     const json = await response.json();
@@ -40,6 +66,42 @@ const Signup = ({ loadUser, onRouteChange }) => {
       Swal.fire({
         icon: "warning",
         title: "User ALready Exist",
+        text: "",
+      });
+    } else if (json.error === "pin") {
+      Swal.fire({
+        icon: "warning",
+        title: "Give a valid PIN code",
+        text: "",
+      });
+    } else if (json.error === "phno") {
+      Swal.fire({
+        icon: "warning",
+        title: "Give a valid Phone No",
+        text: "",
+      });
+    } else if (json.error === "state") {
+      Swal.fire({
+        icon: "warning",
+        title: "Give a valid state Name",
+        text: "",
+      });
+    } else if (json.error === "email") {
+      Swal.fire({
+        icon: "warning",
+        title: "Give a valid Email",
+        text: "",
+      });
+    } else if (json.error === "password") {
+      Swal.fire({
+        icon: "warning",
+        title: "Give a valid Password",
+        text: "",
+      });
+    } else if (json.error === "name") {
+      Swal.fire({
+        icon: "warning",
+        title: "Give a valid Name",
         text: "",
       });
     } else {
@@ -60,8 +122,9 @@ const Signup = ({ loadUser, onRouteChange }) => {
             className="form-select"
             id="inputGroupSelect03"
             aria-label="Example select with button addon"
+            onChange={onRoleChange}
           >
-            <option value="vender">Farmer</option>
+            <option value="farmer">Farmer</option>
             <option value="buyer">Buyer</option>
           </select>
         </div>
@@ -83,7 +146,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
             name="username"
             id="username"
             placeholder=""
-            onChange={onNameChange}
+            onChange={onPhnoChange}
           />
         </div>
 
@@ -114,7 +177,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
             name="username"
             id="username"
             placeholder=""
-            onChange={onNameChange}
+            onChange={onStateChange}
           />
         </div>
         <div className="input-group">
@@ -124,7 +187,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
             name="username"
             id="username"
             placeholder=""
-            onChange={onNameChange}
+            onChange={onCityChange}
           />
         </div>
         <div className="input-group">
@@ -134,7 +197,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
             name="username"
             id="username"
             placeholder=""
-            onChange={onNameChange}
+            onChange={onPinChange}
           />
         </div>
 

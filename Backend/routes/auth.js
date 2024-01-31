@@ -6,16 +6,55 @@ const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const fetchUser = require("../middleware/fetchUserr");
 const JWT_SECRET = "Sunitisagoodbo$y";
+const validStates = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Andaman and Nicobar Islands",
+  "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Lakshadweep",
+  "Delhi",
+  "Puducherry",
+];
 
 // ROUTE 1: Create a User using:POST "/api/auth/createuser". No login required
 router.post(
   "/createuser",
   [
-    body("email", "Enter a valid email").isEmail(),
-    body("name", "Enter a valid name").isLength({ min: 3 }),
-    body("password", "Password must be atleast 5 characters").isLength({
+    body("email", "email").isEmail(),
+    body("name", "name").isLength({ min: 3 }),
+    body("password", "password").isLength({
       min: 5,
     }),
+    body("pin", "pin").matches(/^\d{6}$/),
+    body("state", "state").isIn(validStates),
+    body("phno", "phno").matches(/^\d{10}$/),
   ],
   async (req, res) => {
     let success = false;
@@ -23,7 +62,8 @@ router.post(
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.json("Invalid");
+      const firstError = errors.array()[0];
+      return res.status(400).json({ error: firstError.msg });
     }
     //Check weather the user with this email exists already
     try {
@@ -37,6 +77,11 @@ router.post(
         name: req.body.name,
         password: secPass,
         email: req.body.email,
+        role: req.body.role,
+        pin: req.body.pin,
+        city: req.body.city,
+        state: req.body.state,
+        phno: req.body.phno,
       });
       const data = {
         id: user.id,
