@@ -91,6 +91,7 @@ function Navbar() {
                           aria-current="page"
                           to="/"
                         >
+                          <i class="fa-solid fa-house"></i>
                           Home
                         </Link>
                       </li>
@@ -99,6 +100,7 @@ function Navbar() {
                           class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
                           to="/about"
                         >
+                          <i class="fa-solid fa-circle-info"></i>
                           About
                         </Link>
                       </li>
@@ -111,26 +113,16 @@ function Navbar() {
                           Market
                         </Link>
                       </li>
-                      <li class="nav-item mx-2 nav_txt">
-                        <button
-                          class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
-                          onClick={onDashboard}
-                        >
-                          <i class="fa-solid fa-briefcase"></i>
-                          Service
-                        </button>
-                      </li>
                     </ul>
 
                     {/* Profile */}
                     <div className=" d-flex flex-column flex-lg-row p-4 justify-content-center align-items-center gap-3 ">
-                      <button
-                        class=" text-decoration-none px-3 py-1 rounded-4"
-                        id="signup"
-                        onClick={onLogOut}
+                      <Link
+                        class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
+                        to="/profile"
                       >
-                        Log Out <i class="fa-solid fa-right-from-bracket"></i>
-                      </button>
+                        <i class="fa-solid fa-user "></i> Profile
+                      </Link>
                     </div>
                   </div>
                 </div>

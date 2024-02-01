@@ -6,6 +6,7 @@ import Signup from "./components/signup";
 import ContactUs from "./components/contact_us";
 import About from "./components/about";
 import Market from "./components/market.jsx";
+import Fprofile from "./components/farmer_profile.jsx";
 
 import "./App.css";
 import {
@@ -73,6 +74,15 @@ function App() {
           element={
             <>
               <Market />
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Navbar />
+              <Fprofile />
             </>
           }
         />

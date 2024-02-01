@@ -33,7 +33,7 @@
   font-size: 1.1rem;
   letter-spacing: 2px;
   padding: 1rem 2rem;
-  margin-bottom: 75px;
+  margin-bottom: 100px;
   border-radius: 30px;
 }
 .buy-btn:hover {
@@ -43,13 +43,6 @@
 }
 
 @media screen and (max-width: 700px) {
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  .hero-text p {
-    font-size: 1.1rem;
-    padding: 0 0 2rem 0;
-  }
   .buy-btn {
     padding: 0.6rem 1.1rem;
     border-radius: 6px;
