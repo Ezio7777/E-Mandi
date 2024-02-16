@@ -7,6 +7,7 @@ import ContactUs from "./components/contact_us";
 import About from "./components/about";
 import Market from "./components/market.jsx";
 import Fprofile from "./components/farmer_profile.jsx";
+import Dashboard from "./components/Dashboard/main.jsx";
 
 import "./App.css";
 import {
@@ -82,7 +83,7 @@ function App() {
           element={
             <>
               <Navbar />
-              <Fprofile />
+              <Dashboard />
             </>
           }
         />

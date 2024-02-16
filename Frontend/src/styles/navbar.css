@@ -4,13 +4,14 @@
 
 .navbar_body {
   background-color: #23c686;
-  margin: 0 30px;
+  /* margin: 0 30px;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
   border-radius: 13px;
-  width: 95%;
-  position: fixed;
-  top: 20px;
+  
+  top: 20px;*/
   z-index: 9999;
+  width: 100%;
+  position: fixed;
 }
 
 .navbar-brand {

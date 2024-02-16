@@ -16,6 +16,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
 
   const onRoleChange = (event) => {
     setRole(event.target.value);
+    console.log(event.target.value);
   };
   const onEmailChange = (event) => {
     setEmail(event.target.value);

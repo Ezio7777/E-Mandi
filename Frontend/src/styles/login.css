@@ -1,8 +1,14 @@
 .whole-body-login {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 85vh;
+  justify-content: center;
+  background: url("../images/Hero/slider-2.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
 }
 
 .form-container {
