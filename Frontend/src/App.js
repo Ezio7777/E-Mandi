@@ -8,6 +8,7 @@ import About from "./components/about";
 import Market from "./components/market.jsx";
 import Fprofile from "./components/farmer_profile.jsx";
 import Dashboard from "./components/Dashboard/main.jsx";
+import Cart from "./components/cart/cart_main.jsx";
 
 import "./App.css";
 import {
@@ -84,6 +85,15 @@ function App() {
             <>
               <Navbar />
               <Dashboard />
+            </>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <>
+              <Navbar />
+              <Cart />
             </>
           }
         />

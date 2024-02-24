@@ -115,13 +115,20 @@ function Navbar() {
                       </li>
                     </ul>
 
-                    {/* Profile */}
                     <div className=" d-flex flex-column flex-lg-row p-4 justify-content-center align-items-center gap-3 ">
+                      {/* Cart */}
+                      <Link
+                        class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
+                        to="/cart"
+                      >
+                        <i class="fa-solid fa-cart-shopping"></i>
+                      </Link>
+                      {/* Profile */}
                       <Link
                         class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
                         to="/profile"
                       >
-                        <i class="fa-solid fa-user "></i> Profile
+                        <i class="fa-solid fa-user "></i>
                       </Link>
                     </div>
                   </div>
