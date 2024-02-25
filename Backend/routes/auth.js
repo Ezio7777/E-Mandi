@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const fetchUser = require("../middleware/fetchUserr");
 const JWT_SECRET = "Sunitisagoodbo$y";
+
 const validStates = [
   "Andhra Pradesh",
   "Arunachal Pradesh",

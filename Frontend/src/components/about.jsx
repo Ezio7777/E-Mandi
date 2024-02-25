@@ -6,17 +6,12 @@ const about = () => {
     <div className="container  about_body">
       <div className="h1">About Us</div>
       <div className="h3">
-        "Travelista" will offer users a seamless travel experience through its
-        MERN stack platform. Users can register, log in, and manage profiles
-        securely. Tour providers can create, edit, and delete tours, with users
-        having the ability to search, book, and review these experiences. The
-        platform includes a messaging system for user-provider interaction and
-        implements robust security measures. A responsive design ensures a
-        smooth experience across devices, while an admin dashboard monitors user
-        and tour activities. The system also undergoes rigorous testing for
-        reliability and scalability. Clear documentation aids developers,
-        contributing to successful deployment and ongoing maintenance of a
-        user-friendly travel booking solution.
+        E-Mandi is an innovative online platform revolutionizing agricultural
+        trading. It connects farmers directly with consumers, facilitating
+        seamless transactions and eliminating middlemen. Through a user-friendly
+        interface, farmers can showcase their produce, while consumers gain
+        access to fresh, locally sourced goods. E-Mandi promotes fair pricing,
+        transparency, and sustainability in the agricultural supply chain.
       </div>
       <br />
       <div className="h2">Team Members</div>
