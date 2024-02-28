@@ -5,11 +5,6 @@ import Swal from "sweetalert2";
 
 function Navbar() {
   const navigate = useNavigate();
-  const onLogOut = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-    window.location.reload();
-  };
 
   const onDashboard = async () => {
     try {

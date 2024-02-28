@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import {
   BsCart3,
   BsGrid1X2Fill,
@@ -10,7 +11,35 @@ import {
   BsFillGearFill,
 } from "react-icons/bs";
 
+import { Link, useNavigate } from "react-router-dom";
+
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
+  const navigate = useNavigate();
+
+  //Logout
+  const onLogOut = () => {
+    Swal.fire({
+      title: "Log Out",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire({
+        //   title: "Log Out",
+        //   text: "",
+        //   icon: "success",
+        // });
+        localStorage.removeItem("token");
+        navigate("/");
+        window.location.reload();
+      }
+    });
+  };
+
   return (
     <aside
       id="sidebar"
@@ -59,6 +88,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         <li className="sidebar-list-item">
           <a href="">
             <BsFillGearFill className="icon" /> Setting
+          </a>
+        </li>
+        <li className="sidebar-list-item">
+          <a onClick={onLogOut}>
+            <i className="fa-solid fa-right-from-bracket icon"></i> Log Out
           </a>
         </li>
       </ul>
