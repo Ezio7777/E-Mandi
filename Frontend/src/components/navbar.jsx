@@ -6,33 +6,38 @@ import Swal from "sweetalert2";
 function Navbar() {
   const navigate = useNavigate();
 
-  const onDashboard = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/dashboard/show`, {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
-      });
-      const json = await response.json();
-      if (json == null) {
-        Swal.fire({
-          icon: "warning",
-          title: "Not Enough Data",
-          text: "",
-        });
-      } else {
-        navigate("/dashboard", { state: { data: json } });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const onDashboard = async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/api/dashboard/show`, {
+  //       method: "get",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "auth-token": localStorage.getItem("token"),
+  //       },
+  //     });
+  //     const json = await response.json();
+  //     if (json == null) {
+  //       Swal.fire({
+  //         icon: "warning",
+  //         title: "Not Enough Data",
+  //         text: "",
+  //       });
+  //     } else {
+  //       navigate("/dashboard", { state: { data: json } });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // Role
+
+  const role = localStorage.getItem("role");
 
   return (
     <>
       {localStorage.getItem("token") ? (
+        // Log In
         <>
           <div className="navbar_body">
             <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -99,25 +104,41 @@ function Navbar() {
                           About
                         </Link>
                       </li>
-                      <li class="nav-item mx-2 nav_txt">
-                        <Link
-                          class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
-                          to="/market"
-                        >
-                          <i class="fa-solid fa-store"></i>
-                          Market
-                        </Link>
-                      </li>
+                      {role == "buyer" ? (
+                        <li class="nav-item mx-2 nav_txt">
+                          <Link
+                            class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
+                            to="/market"
+                          >
+                            <i class="fa-solid fa-store"></i>
+                            Market
+                          </Link>
+                        </li>
+                      ) : (
+                        <li class="nav-item mx-2 nav_txt">
+                          <Link
+                            class="nav-link  text-decoration-none px-3 py-1 rounded-4 nav_txt_hov"
+                            to="/market"
+                          >
+                            <i class="fa-solid fa-store"></i>
+                            Listing
+                          </Link>
+                        </li>
+                      )}
                     </ul>
 
                     <div className=" d-flex flex-column flex-lg-row p-4 justify-content-center align-items-center gap-3 ">
                       {/* Cart */}
-                      <Link
-                        class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
-                        to="/cart"
-                      >
-                        <i class="fa-solid fa-cart-shopping"></i>
-                      </Link>
+                      {role == "buyer" ? (
+                        <Link
+                          class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
+                          to="/cart"
+                        >
+                          <i class="fa-solid fa-cart-shopping"></i>
+                        </Link>
+                      ) : (
+                        <></>
+                      )}
                       {/* Profile */}
                       <Link
                         class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
@@ -133,6 +154,7 @@ function Navbar() {
           </div>
         </>
       ) : (
+        // Log Out
         <>
           <div className="navbar_body">
             <nav class="navbar navbar-expand-lg navbar-dark navbar_bg">

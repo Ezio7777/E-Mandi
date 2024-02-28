@@ -34,6 +34,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         //   icon: "success",
         // });
         localStorage.removeItem("token");
+        localStorage.removeItem("role");
         navigate("/");
         window.location.reload();
       }
@@ -90,8 +91,8 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
             <BsFillGearFill className="icon" /> Setting
           </a>
         </li>
-        <li className="sidebar-list-item">
-          <a onClick={onLogOut}>
+        <li className="sidebar-list-item" onClick={onLogOut}>
+          <a>
             <i className="fa-solid fa-right-from-bracket icon"></i> Log Out
           </a>
         </li>
