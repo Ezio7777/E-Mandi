@@ -3,6 +3,7 @@ import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import Hero from "./hero";
 import Navbar from "./navbar";
+import Product from "./product/product";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Home = () => {
     <>
       <Navbar />
       <Hero />
+      <Product />
     </>
   );
 };
