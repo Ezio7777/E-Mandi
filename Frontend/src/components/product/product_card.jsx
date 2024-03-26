@@ -4,7 +4,6 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-// import { MyContext } from "../../App";
 
 const Product = () => {
   //   const [productData, setProductData] = useState();
@@ -25,6 +24,8 @@ const Product = () => {
   //     context.addToCart(item);
   //     setIsadded(true);
   //   };
+
+  const role = localStorage.getItem("role");
 
   const data = {
     tag: null,
@@ -100,14 +101,17 @@ const Product = () => {
                 <span className="oldPrice ml-auto">Rs {data.oldPrice}</span>
               </div>
             </div>
-
-            <Button
-              className="w-100 transition mt-3"
-              //   onClick={() => addToCart(productData)}
-            >
-              <ShoppingCartOutlinedIcon />
-              {/* {isAdded === true ? "Added" : "Add"} */}
-            </Button>
+            {role == "farmer" ? (
+              <></>
+            ) : (
+              <Button
+                className="w-100 transition mt-3"
+                //   onClick={() => addToCart(productData)}
+              >
+                <ShoppingCartOutlinedIcon />
+                {/* {isAdded === true ? "Added" : "Add"} */}
+              </Button>
+            )}
           </div>
         </>
       )}

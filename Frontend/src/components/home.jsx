@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
-import Hero from "./hero";
+import Hero from "./Hero/hero";
 import Navbar from "./navbar";
 import Product from "./product/product";
 
