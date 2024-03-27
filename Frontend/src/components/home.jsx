@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Hero from "./Hero/hero";
 import Navbar from "./navbar";
 import Product from "./product/product";
+import Top from "./TopBar/top";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const Home = () => {
     <>
       <Navbar />
       <Hero />
+      <Top />
       <Product />
     </>
   );
