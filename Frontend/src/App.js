@@ -83,7 +83,7 @@ function App() {
           path="/profile"
           element={
             <>
-              <Navbar />
+              {/* <Navbar /> */}
               <Dashboard />
             </>
           }
