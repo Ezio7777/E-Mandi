@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const Listing = () => {
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-  const [cat, setCat] = useState("");
+  const [cat, setCat] = useState("vegetable");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [pin, setPin] = useState("");
@@ -48,14 +49,20 @@ const Listing = () => {
     "Puducherry",
   ];
 
+  const navigate = useNavigate();
+
   const onQuantityChange = (event) => {
     setQuantity(event.target.value);
   };
   const onCatChange = (event) => {
     setCat(event.target.value);
+    console.log(cat);
   };
   const onNameChange = (event) => {
     setName(event.target.value);
+  };
+  const onDescriptionChange = (event) => {
+    setDescription(event.target.value);
   };
   const onPriceChange = (event) => {
     setPrice(event.target.value);
@@ -72,6 +79,10 @@ const Listing = () => {
 
   const validateName = () => {
     return name.length >= 3;
+  };
+
+  const validateDescription = () => {
+    return description.length >= 10;
   };
 
   const validateQuantity = () => {
@@ -91,20 +102,69 @@ const Listing = () => {
   };
 
   const validateState = () => {
-    // List of valid state names of India
     const validStates = States;
     return validStates.includes(state.trim());
   };
 
   const validatePin = () => {
-    // You can implement pin code validation logic here
     return /^\d{6}$/.test(pin);
   };
+
+  const onList = async () => {
+    console.log("enter onList");
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/product/listing",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            productName: name,
+            quantity: quantity,
+            description: description,
+            price: price,
+            cat: cat,
+            state: state,
+            city: city,
+            pin: pin,
+          }),
+        }
+      );
+
+      const json = await response.json();
+      console.log(json);
+
+      if (json.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Product added successfully",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Not Listed",
+          text: "",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  function inputHandel(e) {
+    e.preventDefault();
+  }
 
   return (
     <div>
       <h1 className="list_heading container">List A New Product</h1>
-      <form className="container list_body">
+      <form className="container list_body" onClick={inputHandel}>
         <div class="form-row list_main row">
           <div class="col-sm-12 col-md-6 ">
             <label for="validationServer01">Product name</label>
@@ -128,6 +188,7 @@ const Listing = () => {
               <div class="valid-feedback">Looks good!</div>
             )}
           </div>
+
           <div class="col-sm-12 col-md-6 list_option">
             <label for="validationServer01">Category</label>
             <select
@@ -137,14 +198,14 @@ const Listing = () => {
               onChange={onCatChange}
               required
             >
-              <option value="farmer">Vegetables</option>
-              <option value="farmer">Fruits</option>
-              <option value="farmer">Dairy Products</option>
-              <option value="buyer">Oil & Ghee</option>
-              <option value="buyer">Atta & Flours</option>
-              <option value="buyer">Masala & Spices</option>
-              <option value="buyer">Rice & Rice products</option>
-              <option value="farmer">Dal & pulses</option>
+              <option value="vegetable">Vegetable</option>
+              <option value="fruit">Fruit</option>
+              <option value="dairy">Dairy Product</option>
+              <option value="oil">Oil & Ghee</option>
+              <option value="atta">Atta & Flours</option>
+              <option value="masala">Masala & Spices</option>
+              <option value="rice">Rice & Rice products</option>
+              <option value="dal">Dal & pulses</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
           </div>
@@ -192,6 +253,28 @@ const Listing = () => {
               <div class="valid-feedback">Looks good!</div>
             )}
           </div>
+        </div>
+        <div class="col-sm-12 col-md-12 ">
+          <label for="validationServer01">Product Description</label>
+          <input
+            type="text"
+            className={
+              validateDescription()
+                ? "form-control is-valid"
+                : "form-control is-invalid"
+            }
+            id="validationServer01"
+            placeholder="Description"
+            required
+            onChange={onDescriptionChange}
+          />
+          {!validateDescription() ? (
+            <div className="invalid-feedback">
+              Description must be at least 10 characters long.
+            </div>
+          ) : (
+            <div class="valid-feedback">Looks good!</div>
+          )}
         </div>
         <div class="form-row row">
           <div class="col-sm-12 col-md-6 ">
@@ -278,7 +361,7 @@ const Listing = () => {
             </div>
           </div> */}
         </div>
-        <button class="btn btn-primary list_btn" type="submit">
+        <button class="btn btn-primary list_btn" onClick={onList}>
           List Product
         </button>
       </form>

@@ -12,9 +12,14 @@ app.use(express.json());
 const port = 4000;
 
 //Routes
+
+//Authentication
 app.use("/api/auth", require("./routes/auth"));
+
+//Listing
+app.use("/api/product", require("./routes/listing.js"));
 
 //Listen
 app.listen(port, () => {
-  console.log(`conected with port no: ${port}`);
+  console.log(`connected with port no: ${port}`);
 });

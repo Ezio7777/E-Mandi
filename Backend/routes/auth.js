@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Farmer = require("../models/Farmer.js");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
@@ -84,6 +85,17 @@ router.post(
         state: req.body.state,
         phno: req.body.phno,
       });
+      if (req.body.role == "farmer") {
+        await Farmer.create({
+          _id: user._id,
+          name: req.body.name,
+          email: req.body.email,
+          pin: req.body.pin,
+          city: req.body.city,
+          state: req.body.state,
+          phno: req.body.phno,
+        });
+      }
       const data = {
         id: user.id,
       };

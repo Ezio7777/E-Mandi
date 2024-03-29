@@ -1,0 +1,49 @@
+const express = require("express");
+const router = express.Router();
+const User = require("../models/User");
+const Farmer = require("../models/Farmer.js");
+const Product = require("../models/Products.js");
+const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+var jwt = require("jsonwebtoken");
+const fetchUser = require("../middleware/fetchUserr");
+const JWT_SECRET = "Sunitisagoodbo$y";
+
+// ROUTE 1: Create a new Product using:POST "/api/product/listing".
+router.post("/listing", fetchUser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    const newProduct = {
+      owner_id: user._id,
+      owner: user.name,
+      productName: req.body.productName,
+      quantity: req.body.quantity,
+      description: req.body.description,
+      price: req.body.price,
+      cat: req.body.cat,
+      state: req.body.state,
+      city: req.body.city,
+      pin: req.body.pin,
+    };
+    //Create the new product
+    const product = await Product.create(newProduct);
+
+    // Add the product ID to the farmer's products array
+
+    await Farmer.updateOne(
+      { _id: req.user.id },
+      { $push: { products: product._id } }
+    );
+
+    // Send success response
+    res.status(201).json({
+      success: true,
+      message: "Product listed successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+module.exports = router;
