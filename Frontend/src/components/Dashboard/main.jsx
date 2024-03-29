@@ -27,7 +27,7 @@ import { IoClose } from "react-icons/io5";
 
 function Main() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-  const [option, setOption] = useState("dashboard");
+  const [option, setOption] = useState("listing");
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
