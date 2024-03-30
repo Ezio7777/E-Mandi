@@ -1,3 +1,5 @@
+import React from "react";
+
 import Navbar from "./components/navbar";
 import Footer from "./components/footer.jsx";
 import Home from "./components/home.jsx";
@@ -6,9 +8,9 @@ import Signup from "./components/signup";
 import ContactUs from "./components/contact_us";
 import About from "./components/about";
 import Market from "./components/market.jsx";
-import Fprofile from "./components/farmer_profile.jsx";
-import Dashboard from "./components/Dashboard/main.jsx";
+import Dashboard from "./components/Dashboard/Farmer/main.jsx";
 import Cart from "./components/cart/cart_main.jsx";
+import Detail from "./components/Details/details.jsx";
 
 import "./App.css";
 
@@ -19,6 +21,9 @@ import {
   // Link,
   Routes,
 } from "react-router-dom";
+import { createContext } from "react";
+
+const MyContext = createContext();
 
 function App() {
   return (
@@ -97,9 +102,20 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/details"
+          element={
+            <>
+              <Navbar />
+              <Detail />
+            </>
+          }
+        />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
+export { MyContext };

@@ -17,7 +17,10 @@ const port = 4000;
 app.use("/api/auth", require("./routes/auth"));
 
 //Listing
-app.use("/api/product", require("./routes/listing.js"));
+app.use("/api/product", require("./routes/Farmer/listing.js"));
+
+//View
+app.use("/api/product", require("./routes/Buyer/View.js"));
 
 //Listen
 app.listen(port, () => {

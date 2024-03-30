@@ -1,12 +1,13 @@
 import React from "react";
 import Card from "./product_card.jsx";
 
-function product() {
-  let cards = [];
-  for (let i = 0; i < 5; i++) {
+function product(props) {
+  const data = props.data;
+  const cards = [];
+  for (let i = 0; i < data.length; i++) {
     cards.push(
       <div key={i} className="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-        <Card />
+        <Card data={data[i]} />
       </div>
     );
   }

@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
-const Farmer = require("../models/Farmer.js");
-const Product = require("../models/Products.js");
+const User = require("../../models/User.js");
+const Farmer = require("../../models/Farmer.js");
+const Product = require("../../models/Products.js");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
-const fetchUser = require("../middleware/fetchUserr");
+const fetchUser = require("../../middleware/fetchUserr.js");
 const JWT_SECRET = "Sunitisagoodbo$y";
 
 // ROUTE 1: Create a new Product using:POST "/api/product/listing".

@@ -3,13 +3,13 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
 import Header from "./header";
-import Home from "./display";
-import Customer from "./Farmer/customer";
-import Listing from "./Farmer/listing";
-import Order from "./Farmer/order";
-import Feedback from "./Farmer/feedback";
-import Setting from "./Farmer/setting";
-import Dashboard from "./Farmer/dashboard";
+import Home from "../display";
+import Customer from "./customer";
+import Listing from "./listing";
+import Order from "./order";
+import Feedback from "./feedback";
+import Setting from "./setting";
+import Dashboard from "./dashboard";
 
 import {
   BsCart3,

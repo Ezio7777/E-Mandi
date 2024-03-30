@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -141,10 +142,10 @@ function Navbar() {
                       )}
                       {/* Profile */}
                       <Link
-                        class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov "
+                        class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov profile_nav"
                         to="/profile"
                       >
-                        <i class="fa-solid fa-user "></i>
+                        <FaUserCircle />
                       </Link>
                     </div>
                   </div>
