@@ -26,6 +26,7 @@ const View = (props) => {
   const weight = ["100g", "250g", "500g", "1kg", "2kg"];
 
   const [price, setPrice] = useState(data.price);
+  const [quantity, setQuantity] = useState(data.price);
   const [activeSize, setActiveSize] = useState(3);
   const p = data.price;
 
@@ -35,14 +36,19 @@ const View = (props) => {
     //Change Price
     if (weight[index] == "100g") {
       setPrice(p * 0.1);
+      setQuantity(weight[index]);
     } else if (weight[index] == "250g") {
       setPrice(p * 0.25);
+      setQuantity(weight[index]);
     } else if (weight[index] == "500g") {
       setPrice(p * 0.5);
+      setQuantity(weight[index]);
     } else if (weight[index] == "1kg") {
       setPrice(p * 1);
+      setQuantity(weight[index]);
     } else if (weight[index] == "2kg") {
       setPrice(p * 2);
+      setQuantity(weight[index]);
     }
   };
   return (
@@ -106,7 +112,7 @@ const View = (props) => {
 
         {/* Cart Button */}
         <div className="d-flex align-items-center">
-          <CartBtn />
+          <CartBtn data={data} price={price} quantity={quantity} />
         </div>
       </div>
     </div>

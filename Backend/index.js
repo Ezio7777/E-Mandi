@@ -22,6 +22,9 @@ app.use("/api/product", require("./routes/Farmer/listing.js"));
 //View
 app.use("/api/product", require("./routes/Buyer/View.js"));
 
+//Cart
+app.use("/api/cart", require("./routes/Buyer/Cart.js"));
+
 //Listen
 app.listen(port, () => {
   console.log(`connected with port no: ${port}`);

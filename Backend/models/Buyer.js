@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const BuyerSchema = new Schema({
-  userid: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
     required: true,
@@ -31,7 +27,9 @@ const BuyerSchema = new Schema({
     type: Number,
     required: true,
   },
+  cart: [],
   order: [],
+  review: [],
 });
-const Buyer = mongoose.model("farmer", BuyerSchema);
+const Buyer = mongoose.model("buyer", BuyerSchema);
 module.exports = Buyer;

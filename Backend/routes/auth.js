@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Farmer = require("../models/Farmer.js");
+const Buyer = require("../models/Buyer.js");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
@@ -95,7 +96,18 @@ router.post(
           state: req.body.state,
           phno: req.body.phno,
         });
+      } else if (req.body.role == "buyer") {
+        await Buyer.create({
+          _id: user._id,
+          name: req.body.name,
+          email: req.body.email,
+          pin: req.body.pin,
+          city: req.body.city,
+          state: req.body.state,
+          phno: req.body.phno,
+        });
       }
+
       const data = {
         id: user.id,
       };
