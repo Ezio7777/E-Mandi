@@ -36,11 +36,13 @@ const CartBtn = (props) => {
       console.log(json);
       if (json.success) {
         Swal.fire({
+          position: "top-end",
           icon: "success",
           title: "item added to cart",
           showConfirmButton: false,
-          timer: 2000,
+          timer: 1500,
         });
+
         setIsAdded(true);
         setIsAlreadyAddedInCart(true);
       }

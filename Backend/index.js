@@ -22,7 +22,7 @@ app.use("/api/product", require("./routes/Farmer/listing.js"));
 //View
 app.use("/api/product", require("./routes/Buyer/View.js"));
 
-//Cart
+//Cart (add & Get)
 app.use("/api/cart", require("./routes/Buyer/Cart.js"));
 
 //Listen

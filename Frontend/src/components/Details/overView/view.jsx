@@ -26,7 +26,7 @@ const View = (props) => {
   const weight = ["100g", "250g", "500g", "1kg", "2kg"];
 
   const [price, setPrice] = useState(data.price);
-  const [quantity, setQuantity] = useState(data.price);
+  const [quantity, setQuantity] = useState("1kg");
   const [activeSize, setActiveSize] = useState(3);
   const p = data.price;
 

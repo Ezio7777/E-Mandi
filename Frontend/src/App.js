@@ -9,7 +9,7 @@ import ContactUs from "./components/contact_us";
 import About from "./components/about";
 import Market from "./components/market.jsx";
 import Dashboard from "./components/Dashboard/Farmer/main.jsx";
-import Cart from "./components/cart/cart_main.jsx";
+import Cart from "./components/cart/cart.jsx";
 import Detail from "./components/Details/details.jsx";
 
 import "./App.css";
