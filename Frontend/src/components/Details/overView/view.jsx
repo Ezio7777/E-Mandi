@@ -9,6 +9,7 @@ import "../details.css";
 import CartBtn from "../CartBtn/cartBtn";
 
 const View = (props) => {
+  const role = localStorage.getItem("role");
   const data = props.data;
   const image = props.image;
 
@@ -111,9 +112,11 @@ const View = (props) => {
         )}
 
         {/* Cart Button */}
-        <div className="d-flex align-items-center">
-          <CartBtn data={data} price={price} quantity={quantity} />
-        </div>
+        {role === "buyer" && (
+          <div className="d-flex align-items-center">
+            <CartBtn data={data} price={price} quantity={quantity} />
+          </div>
+        )}
       </div>
     </div>
   );

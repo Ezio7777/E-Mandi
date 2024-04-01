@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
 import Header from "./header";
 import Home from "../display";
-import Customer from "./customer";
-import Listing from "./listing";
 import Order from "./order";
+import Listing from "./listing";
+import Inventory from "./inventory";
 import Feedback from "./feedback";
 import Setting from "./setting";
 import Dashboard from "./dashboard";
@@ -97,9 +97,9 @@ function Main() {
           </li>
           <li
             className="sidebar-list-item"
-            onClick={() => handleOptionClick("customer")}
+            onClick={() => handleOptionClick("order")}
           >
-            <BsPeopleFill className="icon" /> Customer
+            <BsPeopleFill className="icon" /> Orders
           </li>
           <li
             className="sidebar-list-item"
@@ -109,9 +109,9 @@ function Main() {
           </li>
           <li
             className="sidebar-list-item"
-            onClick={() => handleOptionClick("order")}
+            onClick={() => handleOptionClick("inventory")}
           >
-            <BsFillArchiveFill className="icon" /> Order
+            <BsFillArchiveFill className="icon" /> Inventory
           </li>
           <li
             className="sidebar-list-item"
@@ -133,8 +133,8 @@ function Main() {
         </ul>
       </aside>
       {/* Render component based on the selected option */}
-      {option === "customer" ? (
-        <Customer />
+      {option === "inventory" ? (
+        <Inventory />
       ) : option === "listing" ? (
         <Listing />
       ) : option === "order" ? (

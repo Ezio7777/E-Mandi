@@ -72,7 +72,7 @@ Router.delete("/deleteOne/:index", fetchUser, async (req, res) => {
   }
 });
 
-//Empty the cart
+//Route 4: Empty the cart
 Router.delete("/emptyCart", fetchUser, async (req, res) => {
   try {
     const buyer = await Buyer.findById(req.user.id);

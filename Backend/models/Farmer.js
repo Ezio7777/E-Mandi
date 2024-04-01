@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const FarmerSchema = new Schema({
-  // user_id: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "User",
-  //   required: true,
-  // },
   name: {
     type: String,
     required: true,
@@ -33,7 +28,7 @@ const FarmerSchema = new Schema({
     required: true,
   },
   products: [],
-  review: [],
+  feedback: [],
 });
 const Farmer = mongoose.model("farmer", FarmerSchema);
 module.exports = Farmer;
