@@ -18,13 +18,14 @@ router.post("/listing", fetchUser, async (req, res) => {
       owner_id: user._id,
       owner: user.name,
       productName: req.body.productName,
-      quantity: req.body.quantity,
+      AvlQuantity: req.body.quantity,
       description: req.body.description,
       price: req.body.price,
       cat: req.body.cat,
       state: req.body.state,
       city: req.body.city,
       pin: req.body.pin,
+      image: req.body.image,
     };
     //Create the new product
     const product = await Product.create(newProduct);

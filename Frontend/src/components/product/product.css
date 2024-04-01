@@ -152,3 +152,6 @@
   background: #3bb77e !important;
   color: #fff !important;
 }
+.cursor {
+  cursor: pointer;
+}

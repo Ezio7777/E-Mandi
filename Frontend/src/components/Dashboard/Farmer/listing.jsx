@@ -3,6 +3,9 @@ import "./listing.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+
+import imgData from "../../../data/product_img_data";
+
 const Listing = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -56,7 +59,6 @@ const Listing = () => {
   };
   const onCatChange = (event) => {
     setCat(event.target.value);
-    console.log(cat);
   };
   const onNameChange = (event) => {
     setName(event.target.value);
@@ -111,44 +113,72 @@ const Listing = () => {
   };
 
   const onList = async () => {
-    console.log("enter onList");
     try {
-      const response = await fetch(
-        "http://localhost:4000/api/product/listing",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({
-            productName: name,
-            quantity: quantity,
-            description: description,
-            price: price,
-            cat: cat,
-            state: state,
-            city: city,
-            pin: pin,
-          }),
+      if (
+        validateCity() &&
+        validateDescription() &&
+        validateName() &&
+        validatePin &&
+        validatePrice() &&
+        validateQuantity() &&
+        validateState()
+      ) {
+        let image;
+
+        if (imgData[cat] && imgData[cat][name]) {
+          image = imgData[cat][name];
+          console.log(image);
+        } else if (imgData[cat] && imgData[cat].all) {
+          image = imgData[cat].all;
+          console.log(image);
+        } else {
+          console.error(`Image not found for category: ${cat}`);
         }
-      );
 
-      const json = await response.json();
-      console.log(json);
+        const response = await fetch(
+          "http://localhost:4000/api/product/listing",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem("token"),
+            },
+            body: JSON.stringify({
+              productName: name,
+              quantity: quantity,
+              description: description,
+              price: price,
+              cat: cat,
+              state: state,
+              city: city,
+              pin: pin,
+              image: image,
+            }),
+          }
+        );
 
-      if (json.success) {
-        Swal.fire({
-          icon: "success",
-          title: "Product added successfully",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-        navigate("/");
+        const json = await response.json();
+        console.log(json);
+
+        if (json.success) {
+          Swal.fire({
+            icon: "success",
+            title: "Product added successfully",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          navigate("/");
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "Not Listed",
+            text: "",
+          });
+        }
       } else {
         Swal.fire({
           icon: "warning",
-          title: "Not Listed",
+          title: "Fill all the fields",
           text: "",
         });
       }
@@ -200,9 +230,7 @@ const Listing = () => {
             >
               <option value="vegetable">Vegetable</option>
               <option value="fruit">Fruit</option>
-              <option value="dairy">Dairy Product</option>
-              <option value="oil">Oil & Ghee</option>
-              <option value="atta">Atta & Flours</option>
+              <option value="flours">Atta & Flours</option>
               <option value="masala">Masala & Spices</option>
               <option value="rice">Rice & Rice products</option>
               <option value="dal">Dal & pulses</option>

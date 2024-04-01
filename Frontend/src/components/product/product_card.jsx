@@ -36,8 +36,7 @@ const Product = (props) => {
     name: product.productName,
     price: product.price,
     // oldPrice: 200,
-    image:
-      "https://www.jiomart.com/images/product/original/491278616/good-life-raw-peanuts-500-g-product-images-o491278616-p491278616-0-202306102242.jpg",
+    image: product.image,
     brand: product.owner,
     rating: product.rating,
     quantity: product.quantity,
@@ -55,7 +54,7 @@ const Product = (props) => {
 
       {data !== undefined && (
         <>
-          <button onClick={onDetail}>
+          <div onClick={onDetail} className="cursor">
             <div className="imgWrapper">
               <div className="p-4 wrapper mb-3">
                 <img
@@ -84,12 +83,12 @@ const Product = (props) => {
                                 </ul>
                             </div> */}
             </div>
-          </button>
+          </div>
 
           <div className="info">
             <span className="d-block catName">{data.brand}</span>
             <h4 className="title">
-              <Link>{data.name.substr(0, 50) + "..."}</Link>
+              <Link>{data.name}</Link>
             </h4>
             <Rating
               name="half-rating-read"
