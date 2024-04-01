@@ -99,13 +99,13 @@ function Main() {
             className="sidebar-list-item"
             onClick={() => handleOptionClick("order")}
           >
-            <BsPeopleFill className="icon" /> Orders
+            <BsPeopleFill className="icon" /> Orders Received
           </li>
           <li
             className="sidebar-list-item"
             onClick={() => handleOptionClick("listing")}
           >
-            <BsFillGrid3X3GapFill className="icon" /> Listing
+            <BsFillGrid3X3GapFill className="icon" /> Product Listing
           </li>
           <li
             className="sidebar-list-item"

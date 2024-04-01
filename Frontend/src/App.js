@@ -7,8 +7,8 @@ import Login from "./components/login.jsx";
 import Signup from "./components/signup";
 import ContactUs from "./components/contact_us";
 import About from "./components/about";
-import Market from "./components/market.jsx";
-import Dashboard from "./components/Dashboard/Farmer/main.jsx";
+import FarmerDashboard from "./components/Dashboard/Farmer/main.jsx";
+import BuyerDashboard from "./components/Dashboard/Buyer/main.jsx";
 import Cart from "./components/cart/cart.jsx";
 import Detail from "./components/Details/details.jsx";
 
@@ -76,20 +76,22 @@ function App() {
             </>
           }
         />
+
         <Route
-          path="/market"
+          path="/farmerProfile"
           element={
             <>
-              <Market />
+              {/* <Navbar /> */}
+              <FarmerDashboard />
             </>
           }
         />
         <Route
-          path="/profile"
+          path="/buyerProfile"
           element={
             <>
               {/* <Navbar /> */}
-              <Dashboard />
+              <BuyerDashboard />
             </>
           }
         />

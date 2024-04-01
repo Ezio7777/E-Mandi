@@ -141,12 +141,21 @@ function Navbar() {
                         <></>
                       )}
                       {/* Profile */}
-                      <Link
-                        class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov profile_nav"
-                        to="/profile"
-                      >
-                        <FaUserCircle />
-                      </Link>
+                      {role == "farmer" ? (
+                        <Link
+                          class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov profile_nav"
+                          to="/farmerProfile"
+                        >
+                          <FaUserCircle />
+                        </Link>
+                      ) : (
+                        <Link
+                          class=" text-decoration-none px-3 py-1 rounded-4 nav_txt nav_txt_hov profile_nav"
+                          to="/buyerProfile"
+                        >
+                          <FaUserCircle />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -3,13 +3,14 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
 import Header from "./header";
-import Home from "../display";
-import Customer from "./customer";
-import Listing from "./listing";
-import Order from "./order";
+import { FaHistory } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaShoppingBag } from "react-icons/fa";
+
+import MyOrder from "./myOrder";
+import OrderHistory from "./orderHistory";
 import Feedback from "./feedback";
 import Setting from "./setting";
-import Dashboard from "./dashboard";
 
 import {
   BsCart3,
@@ -43,6 +44,10 @@ function Main() {
   //Home
   const onHome = () => {
     navigate("/");
+  };
+  //cart
+  const goCart = () => {
+    navigate("/cart");
   };
 
   //Logout
@@ -89,29 +94,21 @@ function Main() {
           <li className="sidebar-list-item" onClick={onHome}>
             <FaHome className="icon" /> Home
           </li>
-          <li
-            className="sidebar-list-item"
-            onClick={() => handleOptionClick("dashboard")}
-          >
-            <BsGrid1X2Fill className="icon" /> Dashboard
-          </li>
-          <li
-            className="sidebar-list-item"
-            onClick={() => handleOptionClick("customer")}
-          >
-            <BsPeopleFill className="icon" /> Customer
-          </li>
-          <li
-            className="sidebar-list-item"
-            onClick={() => handleOptionClick("listing")}
-          >
-            <BsFillGrid3X3GapFill className="icon" /> Listing
-          </li>
+
           <li
             className="sidebar-list-item"
             onClick={() => handleOptionClick("order")}
           >
-            <BsFillArchiveFill className="icon" /> Order
+            <FaShoppingBag className="icon" /> My Orders
+          </li>
+          <li className="sidebar-list-item" onClick={goCart}>
+            <FaCartShopping className="icon" /> My Cart
+          </li>
+          <li
+            className="sidebar-list-item"
+            onClick={() => handleOptionClick("history")}
+          >
+            <FaHistory className="icon" /> Order History
           </li>
           <li
             className="sidebar-list-item"
@@ -133,16 +130,12 @@ function Main() {
         </ul>
       </aside>
       {/* Render component based on the selected option */}
-      {option === "customer" ? (
-        <Customer />
-      ) : option === "listing" ? (
-        <Listing />
-      ) : option === "order" ? (
-        <Order />
+      {option === "order" ? (
+        <MyOrder />
+      ) : option === "history" ? (
+        <OrderHistory />
       ) : option === "feedback" ? (
         <Feedback />
-      ) : option === "dashboard" ? (
-        <Dashboard />
       ) : (
         <Setting />
       )}
