@@ -9,6 +9,10 @@ const fetchUser = require("../../middleware/fetchUserr.js");
 Router.post("/add", fetchUser, async (req, res) => {
   try {
     const newItem = {
+      buyer_id: req.user.id,
+      farmer_id: req.body.farmer_id,
+      farmerName: req.body.farmerName,
+      productId: req.body.productId,
       productName: req.body.productName,
       quantity: req.body.quantity,
       description: req.body.description,

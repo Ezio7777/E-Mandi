@@ -28,6 +28,9 @@ app.use("/api/product", require("./routes/Buyer/View.js"));
 //Cart (add & Get)
 app.use("/api/cart", require("./routes/Buyer/Cart.js"));
 
+//Place Order
+app.use("/api/order", require("./routes/Buyer/PlaceOrder.js"));
+
 //Listen
 app.listen(port, () => {
   console.log(`connected with port no: ${port}`);

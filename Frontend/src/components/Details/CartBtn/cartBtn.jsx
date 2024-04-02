@@ -24,16 +24,19 @@ const CartBtn = (props) => {
           "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({
+          productId: data._id,
           productName: data.productName,
           quantity: quantity,
           description: data.description,
           price: price,
           cat: data.cat,
+          farmer_id: data.owner_id,
+          farmerName: data.owner,
           date: data.date,
         }),
       });
       const json = await response.json();
-      console.log(json);
+
       if (json.success) {
         Swal.fire({
           position: "top-end",

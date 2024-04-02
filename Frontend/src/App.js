@@ -10,6 +10,7 @@ import About from "./components/about";
 import FarmerDashboard from "./components/Dashboard/Farmer/main.jsx";
 import BuyerDashboard from "./components/Dashboard/Buyer/main.jsx";
 import Cart from "./components/cart/cart.jsx";
+import Checkout from "./components/checkout/check.jsx";
 import Detail from "./components/Details/details.jsx";
 
 import "./App.css";
@@ -101,6 +102,15 @@ function App() {
             <>
               <Navbar />
               <Cart />
+            </>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <>
+              <Navbar />
+              <Checkout />
             </>
           }
         />

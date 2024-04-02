@@ -10,10 +10,11 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
   const [data, setData] = useState([]);
   const [shipping, setShipping] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const navigate = useNavigate();
 
   let token = localStorage.getItem("token");
 
@@ -149,6 +150,13 @@ const Cart = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  //Checkout
+  const onCheckout = () => {
+    navigate("/checkout", {
+      state: { data: data, shipping: shipping, totalPrice: totalPrice },
+    });
   };
 
   return (
@@ -297,12 +305,13 @@ const Cart = () => {
                 </div>
 
                 <br />
-                {data.length > 0 ? (
-                  <Button className="btn-g btn-lg proceed-btn">
-                    Proceed To CheckOut
+                {data.length > 0 && (
+                  <Button
+                    className="btn-g btn-lg proceed-btn"
+                    onClick={onCheckout}
+                  >
+                    Proceed to Checkout
                   </Button>
-                ) : (
-                  <></>
                 )}
               </div>
             </div>
