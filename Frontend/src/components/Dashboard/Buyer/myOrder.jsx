@@ -104,7 +104,7 @@ const Order = () => {
                   type="button"
                   onClick={onHome}
                 >
-                  Order Something &nbsp;
+                  Continue Shopping &nbsp;
                   <i class="fa-solid fa-arrow-right-long"></i>
                 </button>
               </div>

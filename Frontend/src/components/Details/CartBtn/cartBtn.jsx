@@ -11,6 +11,7 @@ const CartBtn = (props) => {
   const data = props.data;
   const price = props.price;
   const quantity = props.quantity;
+  const image = props.image;
   const sendQ = props.sendQ;
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ const CartBtn = (props) => {
           farmer_id: data.owner_id,
           farmerName: data.owner,
           date: data.date,
+          image: image,
         }),
       });
       const json = await response.json();

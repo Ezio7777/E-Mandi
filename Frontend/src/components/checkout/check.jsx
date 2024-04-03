@@ -40,6 +40,7 @@ const Checkout = () => {
           quantity: item.quantity,
           description: item.description,
           farmer_id: item.farmer_id,
+          image: item.image,
         });
       });
       const response = await fetch("http://localhost:4000/api/order/place", {

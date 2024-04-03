@@ -39,6 +39,7 @@ const OrderSchema = new Schema({
   },
 
   //Product details
+  image: { type: String },
   productId: {
     type: Schema.Types.ObjectId,
     ref: "Products",
@@ -56,7 +57,7 @@ const OrderSchema = new Schema({
   payment_method: { type: String },
   status: {
     type: String,
-    enum: ["pending", "processing", "shipped", "delivered"],
+    enum: ["pending", "processing", "shipped", "delivered", "canceled"],
     default: "pending",
   },
   delivery_date: Date,

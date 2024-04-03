@@ -154,6 +154,7 @@ const Cart = () => {
 
   //Checkout
   const onCheckout = () => {
+    console.log(data);
     navigate("/checkout", {
       state: { data: data, shipping: shipping, totalPrice: totalPrice },
     });
@@ -206,7 +207,7 @@ const Cart = () => {
                                     <Link to={`/product/${item.id}`}>
                                       <img
                                         src={
-                                          item.catImg + "?im=Resize=(100,100)"
+                                          item.image + "?im=Resize=(100,100)"
                                         }
                                         className="w-100"
                                       />

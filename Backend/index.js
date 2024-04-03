@@ -34,6 +34,9 @@ app.use("/api/order", require("./routes/Buyer/PlaceOrder.js"));
 //MyOrder
 app.use("/api/myOrder", require("./routes/Buyer/MyOrder.js"));
 
+//OrderHistory
+app.use("/api/history", require("./routes/Buyer/OrderHistory.js"));
+
 //Listen
 app.listen(port, () => {
   console.log(`connected with port no: ${port}`);

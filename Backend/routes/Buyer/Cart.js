@@ -19,6 +19,7 @@ Router.post("/add", fetchUser, async (req, res) => {
       price: req.body.price,
       cat: req.body.cat,
       date: req.body.date,
+      image: req.body.image,
     };
 
     const response = await Buyer.updateOne(

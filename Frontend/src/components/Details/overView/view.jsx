@@ -125,6 +125,7 @@ const View = (props) => {
               price={price}
               quantity={quantity}
               sendQ={sendQuantity}
+              image={image}
             />
           </div>
         )}
