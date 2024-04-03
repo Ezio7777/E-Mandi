@@ -31,6 +31,9 @@ app.use("/api/cart", require("./routes/Buyer/Cart.js"));
 //Place Order
 app.use("/api/order", require("./routes/Buyer/PlaceOrder.js"));
 
+//MyOrder
+app.use("/api/myOrder", require("./routes/Buyer/MyOrder.js"));
+
 //Listen
 app.listen(port, () => {
   console.log(`connected with port no: ${port}`);

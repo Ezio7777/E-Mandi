@@ -26,6 +26,8 @@ const OrderSchema = new Schema({
     state: String,
     pin: String,
   },
+  farmer_name: { type: String, required: true },
+  farmer_ph: { type: Number, required: true },
   farmer_address: {
     city: String,
     state: String,

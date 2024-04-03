@@ -29,6 +29,7 @@ const BuyerSchema = new Schema({
   },
   cart: [],
   order: [],
+  orderHistory: [],
   review: [],
 });
 const Buyer = mongoose.model("buyer", BuyerSchema);

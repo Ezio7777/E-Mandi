@@ -24,6 +24,7 @@ Router.post("/place", fetchUser, async (req, res) => {
     const bPin = buyer.pin;
 
     const products = req.body.products;
+    console.log(products);
 
     for (const product of products) {
       const farmer = await Farmer.findById(product.farmer_id);
@@ -37,13 +38,15 @@ Router.post("/place", fetchUser, async (req, res) => {
       const newOrder = {
         OTP: code,
         deliver: false,
-        farmer_id: product.farmer_id,
         buyer_id: req.user.id,
         buyer_address: {
           city: bCity,
           state: bState,
           pin: bPin,
         },
+        farmer_name: farmer.name,
+        farmer_ph: farmer.phno,
+        farmer_id: product.farmer_id,
         farmer_address: {
           city: fCity,
           state: fState,

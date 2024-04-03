@@ -234,7 +234,15 @@ const Cart = () => {
                               </td>
 
                               <td>
-                                <span className="text-g">{item.quantity}</span>
+                                {item.quantity < 1 ? (
+                                  <h4 className="weight_in_cart">
+                                    {item.quantity * 1000}GM
+                                  </h4>
+                                ) : (
+                                  <h4 className="weight_in_cart">
+                                    {item.quantity}KG
+                                  </h4>
+                                )}
                               </td>
 
                               <td align="center">
