@@ -3,12 +3,14 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./check.css";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
   const location = useLocation();
   const data = location.state.data;
   const totalPrice = location.state.totalPrice;
   const shipping = location.state.shipping;
+  const navigate = useNavigate();
 
   const [formFields, setformFields] = useState({
     name: "",
@@ -17,10 +19,6 @@ const Checkout = () => {
     phoneNumber: "",
   });
 
-  const placeOrder = () => {
-    console.log(data);
-  };
-
   const changeInput = (e) => {
     const { name, value } = e.target;
 
@@ -28,6 +26,58 @@ const Checkout = () => {
       ...formFields,
       [name]: value,
     }));
+  };
+
+  const placeOrder = async () => {
+    try {
+      console.log(data);
+      let products = [];
+      data.map((item) => {
+        products.push({
+          productId: item.productId,
+          productName: item.productName,
+          price: item.price,
+          quantity: item.quantity,
+          description: item.description,
+          farmer_id: item.farmer_id,
+        });
+      });
+      const response = await fetch("http://localhost:4000/api/order/place", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          price: data.price,
+          cat: data.cat,
+
+          buyer_id: data.buyer_id,
+          buyerName: data.buyerName,
+          date: data.date,
+          products: products,
+        }),
+      });
+      const json = await response.json();
+      console.log(json);
+      if (json.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Order Placed",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Not Listed",
+          text: "",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

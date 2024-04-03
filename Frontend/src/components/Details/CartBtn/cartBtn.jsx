@@ -11,6 +11,7 @@ const CartBtn = (props) => {
   const data = props.data;
   const price = props.price;
   const quantity = props.quantity;
+  const sendQ = props.sendQ;
   const navigate = useNavigate();
 
   const [isAdded, setIsAdded] = useState(false);
@@ -26,7 +27,7 @@ const CartBtn = (props) => {
         body: JSON.stringify({
           productId: data._id,
           productName: data.productName,
-          quantity: quantity,
+          quantity: sendQ,
           description: data.description,
           price: price,
           cat: data.cat,
