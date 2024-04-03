@@ -140,3 +140,21 @@
 .rating_size {
   font-size: 20px !important;
 }
+
+.OUT_OF_STOCK {
+  color: red !important;
+}
+
+input[type="text"] {
+  background-color: white !important; /* Set the background color for unfocused state */
+  color: black;
+}
+
+input[type="text"]:focus {
+  background-color: white; /* Set the background color for focused state */
+}
+.KG_BTN_INLINE:hover {
+  background-color: white !important;
+  color: green;
+  cursor: inherit !important;
+}

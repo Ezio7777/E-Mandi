@@ -41,17 +41,6 @@ const DetailTab = (props) => {
               className={`${activeTabs === 2 && "active"}`}
               onClick={() => {
                 setActiveTabs(2);
-                // FeedBack();
-              }}
-            >
-              Give Feedback
-            </Button>
-          </li>
-          <li className="list-inline-item">
-            <Button
-              className={`${activeTabs === 3 && "active"}`}
-              onClick={() => {
-                setActiveTabs(3);
                 // showReviews();
               }}
             >
@@ -67,8 +56,7 @@ const DetailTab = (props) => {
           </div>
         )}
         {activeTabs === 1 && <Info data={data} />}
-        {activeTabs === 2 && <FeedBack data={data} />}
-        {activeTabs === 3 && <Review data={data} />}
+        {activeTabs === 2 && <Review data={data} />}
       </div>
     </div>
   );

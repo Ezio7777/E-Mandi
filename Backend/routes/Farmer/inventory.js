@@ -85,4 +85,69 @@ router.delete("/empty", fetchUser, async (req, res) => {
   }
 });
 
+// ROUTE 4: Add stock in a product through the inventory POST "/api/inventory/addStock".
+
+router.post("/addStock", fetchUser, async (req, res) => {
+  try {
+    const response = await Product.findByIdAndUpdate(req.body.id, {
+      $inc: {
+        AloQuantity: req.body.quantity,
+        CurQuantity: req.body.quantity,
+      },
+    });
+    if (!response) {
+      // If response is null, product with given ID was not found
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// ROUTE 5: Change Price in a product through the inventory POST "/api/inventory/changePrice".
+
+router.post("/changePrice", fetchUser, async (req, res) => {
+  try {
+    const response = await Product.findByIdAndUpdate(req.body.id, {
+      price: req.body.price,
+    });
+    if (!response) {
+      // If response is null, product with given ID was not found
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+// ROUTE 4: Add stock in a product through the inventory POST "/api/inventory/addStock".
+
+router.post("/removeStock", fetchUser, async (req, res) => {
+  try {
+    const response = await Product.findByIdAndUpdate(req.body.id, {
+      $inc: {
+        AloQuantity: -req.body.quantity,
+        CurQuantity: -req.body.quantity,
+      },
+    });
+    if (!response) {
+      // If response is null, product with given ID was not found
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
 module.exports = router;

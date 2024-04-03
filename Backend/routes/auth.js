@@ -138,7 +138,8 @@ router.post(
     }
     const { email, password } = req.body;
     try {
-      let user = await User.findOne({ email });
+      let user = await User.findOne({ email }).select();
+      const role = user.role;
       if (!user) {
         success = false;
         return res
@@ -158,7 +159,7 @@ router.post(
       };
       const authtoken = jwt.sign(data, JWT_SECRET);
       success = true;
-      res.json({ success, authtoken });
+      res.json({ success, authtoken, role });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal server error");
@@ -167,15 +168,15 @@ router.post(
 );
 
 // ROUTE 3: Authenticate a User using:POST "/api/auth/getUser". Login required
-router.post("/getUser", fetchUser, async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const user = await User.findById(userId).select("-password");
-    res.json(user);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Internal server error");
-  }
-});
+// router.post("/getUser", fetchUser, async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+//     const user = await User.findById(userId).select("-password");
+//     res.json(user);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Internal server error");
+//   }
+// });
 
 module.exports = router;

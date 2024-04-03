@@ -6,6 +6,7 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Swal from "sweetalert2";
+import EditStockPrice from "./inventory_edit";
 
 const Dashboard = () => {
   let token = localStorage.getItem("token");
@@ -34,9 +35,26 @@ const Dashboard = () => {
 
     getItems(); // Call the getItems function when component mounts
   }, []);
+  const getItems = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/inventory/show", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+      const json = await response.json();
+      setData(json.product);
+      console.log(data); // Handle the fetched data here
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   //Empty Inventory
   const emptyAllItem = () => {
+    console.log(data);
     if (data.length > 0) {
       Swal.fire({
         title: "Remove This Product?",
@@ -109,6 +127,10 @@ const Dashboard = () => {
     }
   };
 
+  const onReview = (item) => {
+    const data = item;
+  };
+
   return (
     <>
       <section className="cartSection mb-5">
@@ -139,8 +161,8 @@ const Dashboard = () => {
                     <thead>
                       <tr>
                         <th>Product</th>
-                        <th className="row_center">Price/KG</th>
-                        <th className="row_center">Available Quantity</th>
+                        <th className="row_center">Edit Stock/Price</th>
+                        <th className="row_center">Reviews</th>
                         <th className="row_center">Remove</th>
                       </tr>
                     </thead>
@@ -167,29 +189,36 @@ const Dashboard = () => {
                                     <Link>
                                       <h4>{item.productName}</h4>
                                     </Link>
-                                    <Rating
-                                      className=""
-                                      name="half-rating-read"
-                                      value={parseFloat(item.rating)}
-                                      precision={0.5}
-                                      readOnly
-                                    />
-                                    {item.rating}
-                                    <span className="rating_size">
-                                      ({parseFloat(item.rating)})
-                                    </span>
+                                    <h4 className="myOrder_info myOrder_info_price">
+                                      RS. {item.price}/KG
+                                    </h4>
+                                    {item.CurQuantity < 0.1 ? (
+                                      <h4 className="myOrder_info OUT_OF_STOCK">
+                                        Out Of Stock
+                                      </h4>
+                                    ) : item.CurQuantity > 1 ? (
+                                      <h4 className="myOrder_info">
+                                        In Stock: {item.CurQuantity}KG
+                                      </h4>
+                                    ) : (
+                                      <h4 className="myOrder_info">
+                                        In Stock: {item.CurQuantity * 1000}GM
+                                      </h4>
+                                    )}
                                   </div>
                                 </div>
                               </td>
 
-                              <td width="20%" align="center">
-                                <span>Rs.{item.price}</span>
-                              </td>
+                              <EditStockPrice item={item} getItems={getItems} />
 
                               <td align="center">
-                                <span className="text-g">
-                                  {item.CurQuantity}KG
-                                </span>
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-primary"
+                                  onClick={() => onReview(item)}
+                                >
+                                  Reviews
+                                </button>
                               </td>
 
                               <td align="center">

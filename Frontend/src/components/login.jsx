@@ -29,6 +29,7 @@ const Login = ({ loadUser, onRouteChange }) => {
     console.log(json);
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("role", json.role);
       handleClick();
     } else if (json === "Invalid") {
       Swal.fire({
