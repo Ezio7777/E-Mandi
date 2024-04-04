@@ -3,13 +3,14 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
 import Header from "./header";
-import Home from "../display";
+import History from "./order_history";
 import Order from "./orderReceived";
 import Listing from "./listing";
 import Inventory from "./inventory";
 import Feedback from "./feedback";
 import Setting from "./setting";
 import Dashboard from "./dashboard";
+import { FaHistory } from "react-icons/fa";
 
 import {
   BsCart3,
@@ -103,6 +104,12 @@ function Main() {
           </li>
           <li
             className="sidebar-list-item"
+            onClick={() => handleOptionClick("history")}
+          >
+            <FaHistory className="icon" /> Order History
+          </li>
+          <li
+            className="sidebar-list-item"
             onClick={() => handleOptionClick("listing")}
           >
             <BsFillGrid3X3GapFill className="icon" /> Product Listing
@@ -143,6 +150,8 @@ function Main() {
         <Feedback />
       ) : option === "dashboard" ? (
         <Dashboard />
+      ) : option === "history" ? (
+        <History />
       ) : (
         <Setting />
       )}

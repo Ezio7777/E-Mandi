@@ -169,7 +169,7 @@ const Dashboard = () => {
 
                     <tbody>
                       {data.length !== 0 &&
-                        data.map((item, index) => {
+                        [...data].reverse().map((item, index) => {
                           return (
                             <tr>
                               <td width={"50%"}>

@@ -27,6 +27,9 @@ app.use("/api/inventory", require("./routes/Farmer/inventory.js"));
 //Order Received
 app.use("/api/orderReceived", require("./routes/Farmer/OrderReceived.js"));
 
+// order_history
+app.use("/api/order_history", require("./routes/Farmer/order_history.js"));
+
 // Buyer
 
 //View

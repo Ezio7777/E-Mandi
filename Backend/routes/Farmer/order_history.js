@@ -9,7 +9,9 @@ const fetchUser = require("../../middleware/fetchUserr.js");
 
 Router.get("/show", fetchUser, async (req, res) => {
   try {
-    const historyIds = await Buyer.findById(req.user.id).select("orderHistory");
+    const historyIds = await Farmer.findById(req.user.id).select(
+      "orderHistory"
+    );
     const historyData = [];
     for (let i = 0; i < historyIds.orderHistory.length; i++) {
       const history = await Order.findById(historyIds.orderHistory[i]);

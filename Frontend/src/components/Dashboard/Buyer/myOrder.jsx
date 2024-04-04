@@ -94,10 +94,7 @@ const Order = () => {
               <div className="d-flex align-items-center w-100">
                 <div className="left">
                   <h1 className="hd mb-0 cart_head">My Orders</h1>
-                  <p className="cart_head_sub">
-                    There are <span className="text-g">{data.length}</span> item
-                    in your list
-                  </p>
+                  <p className="cart_head_sub">Check Your Order List Here</p>
                 </div>
                 <button
                   className="ml-auto clearCart d-flex align-items-center empty-cart-btn btn btn-outline-success"
@@ -124,95 +121,96 @@ const Order = () => {
 
                     <tbody>
                       {data.length !== 0 &&
-                        data.map((item, index) => {
-                          return (
-                            <tr>
-                              <td width={"50%"}>
-                                <div className="d-flex align-items-center">
-                                  <div className="img">
-                                    <Link>
-                                      <img
-                                        src={
-                                          item.image + "?im=Resize=(100,100)"
-                                        }
-                                        className="w-100"
-                                      />
-                                    </Link>
-                                  </div>
+                        [...data].reverse().map(
+                          (item, index) =>
+                            item.status !== "delivered" && (
+                              <tr>
+                                <td width={"50%"}>
+                                  <div className="d-flex align-items-center">
+                                    <div className="img">
+                                      <Link>
+                                        <img
+                                          src={
+                                            item.image + "?im=Resize=(100,100)"
+                                          }
+                                          className="w-100"
+                                        />
+                                      </Link>
+                                    </div>
 
-                                  <div className="info pl-4">
-                                    <Link>
-                                      <h4>{item.productName}</h4>
-                                    </Link>
-                                    <h4 className="myOrder_info myOrder_info_price">
-                                      RS. {item.price}
-                                    </h4>
-                                    {item.quantity < 1 ? (
-                                      <h4 className="myOrder_info">
-                                        Weight: {item.quantity * 1000}GM
+                                    <div className="info pl-4">
+                                      <Link>
+                                        <h4>{item.productName}</h4>
+                                      </Link>
+                                      <h4 className="myOrder_info myOrder_info_price">
+                                        RS. {item.price}
                                       </h4>
-                                    ) : (
-                                      <h4 className="myOrder_info">
-                                        Weight: {item.quantity}KG
-                                      </h4>
-                                    )}
+                                      {item.quantity < 1 ? (
+                                        <h4 className="myOrder_info">
+                                          Weight: {item.quantity * 1000}GM
+                                        </h4>
+                                      ) : (
+                                        <h4 className="myOrder_info">
+                                          Weight: {item.quantity}KG
+                                        </h4>
+                                      )}
+                                    </div>
                                   </div>
-                                </div>
-                              </td>
+                                </td>
 
-                              <td align="center">
-                                <button
-                                  type="button"
-                                  class="btn btn-outline-info"
-                                  onClick={() => {
-                                    onInfo(index);
-                                  }}
-                                >
-                                  Info
-                                </button>
-                              </td>
-                              <td width="20%" align="center">
-                                <p>{item.OTP}</p>
-                              </td>
-
-                              <td align="center" width="20%">
-                                {item.status === "pending" ? (
-                                  <div>
-                                    <span className="text-g status status_pending">
-                                      {item.status.toUpperCase()}
-                                    </span>
-                                  </div>
-                                ) : item.status === "processing" ? (
-                                  <p className="text-g status status_processing">
-                                    {item.status.toUpperCase()}
-                                  </p>
-                                ) : item.status === "shipped" ? (
-                                  <span className="status status_shipped text-g">
-                                    {item.status.toUpperCase()}
-                                  </span>
-                                ) : (
-                                  <span className="status text-g">
-                                    {item.status.toUpperCase()}
-                                  </span>
-                                )}
-                              </td>
-                              {item.status !== "delivered" &&
-                              item.status !== "shipped" ? (
                                 <td align="center">
                                   <button
                                     type="button"
-                                    class="btn btn-outline-danger"
-                                    onClick={() => onCancel(index)}
+                                    class="btn btn-outline-info"
+                                    onClick={() => {
+                                      onInfo(index);
+                                    }}
                                   >
-                                    Cancel
+                                    Info
                                   </button>
                                 </td>
-                              ) : (
-                                <td align="center"></td>
-                              )}
-                            </tr>
-                          );
-                        })}
+                                <td width="20%" align="center">
+                                  <p>{item.OTP}</p>
+                                </td>
+
+                                <td align="center" width="20%">
+                                  {item.status === "pending" ? (
+                                    <div>
+                                      <span className="text-g status status_pending">
+                                        {item.status.toUpperCase()}
+                                      </span>
+                                    </div>
+                                  ) : item.status === "processing" ? (
+                                    <p className="text-g status status_processing">
+                                      {item.status.toUpperCase()}
+                                    </p>
+                                  ) : item.status === "shipped" ? (
+                                    <span className="status status_shipped text-g">
+                                      {item.status.toUpperCase()}
+                                    </span>
+                                  ) : (
+                                    <span className="status text-g">
+                                      {item.status.toUpperCase()}
+                                    </span>
+                                  )}
+                                </td>
+                                {item.status !== "delivered" &&
+                                item.status !== "shipped" ? (
+                                  <td align="center">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-danger"
+                                      onClick={() => onCancel(index)}
+                                    >
+                                      Cancel
+                                    </button>
+                                  </td>
+                                ) : (
+                                  <td align="center"></td>
+                                )}
+                              </tr>
+                            )
+                        )}
                     </tbody>
                   </table>
                 </div>

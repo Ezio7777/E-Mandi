@@ -4,6 +4,7 @@ const Farmer = require("../../models/Farmer.js");
 const Buyer = require("../../models/Buyer.js");
 const Order = require("../../models/Order.js");
 const fetchUser = require("../../middleware/fetchUserr.js");
+const Product = require("../../models/Products.js");
 
 // ROUTE 1: Show Order Received to the farmer:GET "/api/inventory/show".
 router.get("/show", fetchUser, async (req, res) => {
@@ -46,22 +47,33 @@ router.post("/status", fetchUser, async (req, res) => {
       const order = await Order.findById(orderId).select();
 
       const otp = order.OTP;
-      console.log(otp);
+
+      // changing status
       if (code == otp) {
         await Order.findByIdAndUpdate(orderId, {
           status: "delivered",
         });
+
+        // Set history and current section
         await Farmer.findByIdAndUpdate(order.farmer_id, {
           $pull: { orders: orderId },
         });
         await Farmer.findByIdAndUpdate(order.farmer_id, {
           $push: { orderHistory: orderId },
         });
+        await Farmer.findByIdAndUpdate(order.farmer_id, {
+          $pull: { orders: orderId },
+        });
         await Buyer.findByIdAndUpdate(order.buyer_id, {
           $pull: { order: orderId },
         });
         await Buyer.findByIdAndUpdate(order.buyer_id, {
           $push: { orderHistory: order },
+        });
+
+        // adding price
+        await Product.findByIdAndUpdate(order.productId, {
+          $inc: { profit: order.price },
         });
 
         res.status(200).json({ success: true, status: "delivered" });

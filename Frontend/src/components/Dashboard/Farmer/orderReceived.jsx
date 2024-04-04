@@ -51,7 +51,8 @@ const Order = () => {
 
   //Cancel Order
 
-  const onInfo = (index) => {
+  const onInfo = (index, status) => {
+    console.log(status);
     const text =
       `<div>Name - ${data[index].buyer_name}</div>` +
       `<div>State - ${data[index].buyer_address.state}</div>` +
@@ -78,8 +79,7 @@ const Order = () => {
                 <div className="left">
                   <h1 className="hd mb-0 cart_head">Orders Received</h1>
                   <p className="cart_head_sub">
-                    There are <span className="text-g">{data.length}</span> item
-                    in your list
+                    Check Your Order Received List Here
                   </p>
                 </div>
               </div>
@@ -97,58 +97,64 @@ const Order = () => {
 
                     <tbody>
                       {data.length !== 0 &&
-                        data.map((item, index) => {
-                          return (
-                            <tr>
-                              <td width={"50%"}>
-                                <div className="d-flex align-items-center">
-                                  <div className="img">
-                                    <Link>
-                                      <img
-                                        src={
-                                          item.image + "?im=Resize=(100,100)"
-                                        }
-                                        className="w-100"
-                                      />
-                                    </Link>
-                                  </div>
+                        [...data].reverse().map(
+                          (item, index) =>
+                            item.status !== "delivered" && (
+                              <tr key={index}>
+                                <td width={"50%"}>
+                                  <div className="d-flex align-items-center">
+                                    <div className="img">
+                                      <Link>
+                                        <img
+                                          src={
+                                            item.image + "?im=Resize=(100,100)"
+                                          }
+                                          className="w-100"
+                                          alt={item.productName} // Add alt attribute for accessibility
+                                        />
+                                      </Link>
+                                    </div>
 
-                                  <div className="info pl-4">
-                                    <Link>
-                                      <h4>{item.productName}</h4>
-                                    </Link>
-                                    <h4 className="myOrder_info myOrder_info_price">
-                                      RS. {item.price}
-                                    </h4>
-                                    {item.quantity < 1 ? (
-                                      <h4 className="myOrder_info">
-                                        Weight: {item.quantity * 1000}GM
+                                    <div className="info pl-4">
+                                      <Link>
+                                        <h4>{item.productName}</h4>
+                                      </Link>
+                                      <h4 className="myOrder_info myOrder_info_price">
+                                        RS. {item.price}
                                       </h4>
-                                    ) : (
-                                      <h4 className="myOrder_info">
-                                        Weight: {item.quantity}KG
-                                      </h4>
-                                    )}
+                                      {item.quantity < 1 ? (
+                                        <h4 className="myOrder_info">
+                                          Weight: {item.quantity * 1000}GM
+                                        </h4>
+                                      ) : (
+                                        <h4 className="myOrder_info">
+                                          Weight: {item.quantity}KG
+                                        </h4>
+                                      )}
+                                    </div>
                                   </div>
-                                </div>
-                              </td>
+                                </td>
 
-                              <td align="center">
-                                <button
-                                  type="button"
-                                  class="btn btn-outline-info"
-                                  onClick={() => {
-                                    onInfo(index);
-                                  }}
-                                >
-                                  Info
-                                </button>
-                              </td>
+                                <td align="center">
+                                  <button
+                                    type="button"
+                                    className="btn btn-outline-info"
+                                    onClick={() => {
+                                      onInfo(index, item);
+                                    }}
+                                  >
+                                    Info
+                                  </button>
+                                </td>
 
-                              <Status data={item} getOrders={getOrders} />
-                            </tr>
-                          );
-                        })}
+                                <Status
+                                  key={index}
+                                  data={item}
+                                  getOrders={getOrders}
+                                />
+                              </tr>
+                            )
+                        )}
                     </tbody>
                   </table>
                 </div>

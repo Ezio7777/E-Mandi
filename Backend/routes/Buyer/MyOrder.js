@@ -38,11 +38,6 @@ Router.delete("/cancel/:index", fetchUser, async (req, res) => {
     const data = await Order.findById(orderId).select();
     data.status = "canceled";
 
-    //Update orderHistory array in Buyer
-    await Buyer.findByIdAndUpdate(req.user.id, {
-      $push: { orderHistory: data },
-    });
-
     await Product.findByIdAndUpdate(data.productId, {
       $inc: { CurQuantity: data.quantity }, // increment the CurQuantity by the data quantity
     });
