@@ -21,6 +21,8 @@ const OrderSchema = new Schema({
     ref: "User",
     required: true,
   },
+  buyer_name: { type: String, required: true },
+  buyer_ph: { type: Number, required: true },
   buyer_address: {
     city: String,
     state: String,
@@ -52,6 +54,7 @@ const OrderSchema = new Schema({
   },
   quantity: { type: String, required: true },
   description: { type: String, required: true },
+  shipping: { type: Boolean },
 
   //Order Status
   payment_method: { type: String },

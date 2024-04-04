@@ -156,7 +156,11 @@ const Cart = () => {
   const onCheckout = () => {
     console.log(data);
     navigate("/checkout", {
-      state: { data: data, shipping: shipping, totalPrice: totalPrice },
+      state: {
+        data: data,
+        shipping: shipping,
+        totalPrice: totalPrice,
+      },
     });
   };
 
@@ -288,7 +292,7 @@ const Cart = () => {
                   <h5 className="mb-0 black_color">Shipping Fee</h5>
                   <h3 className="ml-auto mb-0 font-weight-bold black_color">
                     <span className="black_color">
-                      {!shipping ? "FREE" : 10}
+                      {!shipping ? "FREE" : 5 * data.length}
                     </span>
                   </h3>
                 </div>
@@ -305,10 +309,16 @@ const Cart = () => {
                 </div> */}
 
                 <div className="d-flex align-items-center mb-4">
+                  <h5 className="mb-0 black_color">Total items</h5>
+                  <h3 className="ml-auto mb-0 font-weight-bold">
+                    <span className="text-g black_color">{data.length}</span>
+                  </h3>
+                </div>
+                <div className="d-flex align-items-center mb-4">
                   <h5 className="mb-0 black_color">Total Amount</h5>
                   <h3 className="ml-auto mb-0 font-weight-bold">
                     <span className="text-g black_color">
-                      {!shipping ? totalPrice : totalPrice + 10}
+                      {!shipping ? totalPrice : totalPrice + data.length * 5}
                     </span>
                   </h3>
                 </div>

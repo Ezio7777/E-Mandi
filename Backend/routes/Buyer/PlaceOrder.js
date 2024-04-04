@@ -38,6 +38,8 @@ Router.post("/place", fetchUser, async (req, res) => {
         OTP: code,
         deliver: false,
         buyer_id: req.user.id,
+        buyer_name: buyer.name,
+        buyer_ph: buyer.phno,
         buyer_address: {
           city: bCity,
           state: bState,
@@ -56,6 +58,7 @@ Router.post("/place", fetchUser, async (req, res) => {
         productName: product.productName,
         price: product.price,
         quantity: product.quantity,
+        shipping: product.shipping,
         description: product.description,
         payment_method: req.body.payment_method,
         status: "pending",
@@ -66,6 +69,7 @@ Router.post("/place", fetchUser, async (req, res) => {
       });
 
       const order = await Order.create(newOrder);
+
       await Buyer.findByIdAndUpdate(req.user.id, {
         $push: { order: order._id },
       });
@@ -90,9 +94,9 @@ Router.post("/place", fetchUser, async (req, res) => {
 
 const uniqueCode = () => {
   let code = "";
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Include desired characters
+  const characters = "0123456789"; // Include desired characters
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 6; i++) {
     const randomIndex = Math.floor(Math.random() * characters.length);
     code += characters.charAt(randomIndex);
   }

@@ -29,6 +29,7 @@ const FarmerSchema = new Schema({
   },
   products: [],
   orders: [],
+  orderHistory: [],
   feedback: [],
 });
 const Farmer = mongoose.model("farmer", FarmerSchema);

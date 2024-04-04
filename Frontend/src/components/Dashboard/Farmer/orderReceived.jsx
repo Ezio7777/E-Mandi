@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./myOrder.css";
+import "./orderReceived.css";
 import Swal from "sweetalert2";
+import Status from "./order_status.jsx";
 
 const Order = () => {
   let token = localStorage.getItem("token");
@@ -10,15 +11,18 @@ const Order = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/MyOrder/show", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-        });
+        const response = await fetch(
+          "http://localhost:4000/api/orderReceived/show",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": token,
+            },
+          }
+        );
         const json = await response.json();
-        setData(json.order);
+        setData(json.orders);
       } catch (error) {
         console.log(error.message);
       }
@@ -26,30 +30,12 @@ const Order = () => {
 
     getOrders();
   }, []);
-
-  //Cancel Order
-  const onCancel = (index) => {
-    Swal.fire({
-      title: "cancel this Order?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3bb77e",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-      cancelButtonText: "No",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        onRemoveOne(index);
-      }
-    });
-  }; //
-  const onRemoveOne = async (index) => {
+  const getOrders = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/myOrder/cancel/${index}`,
+        "http://localhost:4000/api/orderReceived/show",
         {
-          method: "DELETE",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             "auth-token": token,
@@ -58,25 +44,22 @@ const Order = () => {
       );
       const json = await response.json();
       setData(json.orders);
-      if (json.success) {
-        Swal.fire({
-          icon: "success",
-          title: "Order Cancel",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  //Cancel Order
+
   const onInfo = (index) => {
     const text =
-      `<div>Name - ${data[index].farmer_name}</div>` +
-      `<div>PH no. - ${data[index].farmer_ph}</div>`;
+      `<div>Name - ${data[index].buyer_name}</div>` +
+      `<div>State - ${data[index].buyer_address.state}</div>` +
+      `<div>City - ${data[index].buyer_address.city}</div>` +
+      `<div>Pin - ${data[index].buyer_address.pin}</div>` +
+      `<div>PH no. - ${data[index].buyer_ph}</div>`;
     Swal.fire({
-      title: "Seller Details",
+      title: "Buyer Details",
       html: text,
     });
   };
@@ -93,20 +76,12 @@ const Order = () => {
             <div className="">
               <div className="d-flex align-items-center w-100">
                 <div className="left">
-                  <h1 className="hd mb-0 cart_head">My Orders</h1>
+                  <h1 className="hd mb-0 cart_head">Orders Received</h1>
                   <p className="cart_head_sub">
                     There are <span className="text-g">{data.length}</span> item
                     in your list
                   </p>
                 </div>
-                <button
-                  className="ml-auto clearCart d-flex align-items-center empty-cart-btn btn btn-outline-success"
-                  type="button"
-                  onClick={onHome}
-                >
-                  Continue Shopping &nbsp;
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </button>
               </div>
 
               <div className="cartWrapper mt-4">
@@ -115,10 +90,8 @@ const Order = () => {
                     <thead>
                       <tr>
                         <th>Product</th>
-                        <th className="row_center">Seller</th>
-                        <th className="row_center">OTP/Code</th>
+                        <th className="row_center">Buyer</th>
                         <th className="row_center">Status</th>
-                        <th className="row_center">Cancel</th>
                       </tr>
                     </thead>
 
@@ -171,45 +144,8 @@ const Order = () => {
                                   Info
                                 </button>
                               </td>
-                              <td width="20%" align="center">
-                                <p>{item.OTP}</p>
-                              </td>
 
-                              <td align="center" width="20%">
-                                {item.status === "pending" ? (
-                                  <div>
-                                    <span className="text-g status status_pending">
-                                      {item.status.toUpperCase()}
-                                    </span>
-                                  </div>
-                                ) : item.status === "processing" ? (
-                                  <p className="text-g status status_processing">
-                                    {item.status.toUpperCase()}
-                                  </p>
-                                ) : item.status === "shipped" ? (
-                                  <span className="status status_shipped text-g">
-                                    {item.status.toUpperCase()}
-                                  </span>
-                                ) : (
-                                  <span className="status text-g">
-                                    {item.status.toUpperCase()}
-                                  </span>
-                                )}
-                              </td>
-                              {item.status !== "delivered" &&
-                              item.status !== "shipped" ? (
-                                <td align="center">
-                                  <button
-                                    type="button"
-                                    class="btn btn-outline-danger"
-                                    onClick={() => onCancel(index)}
-                                  >
-                                    Cancel
-                                  </button>
-                                </td>
-                              ) : (
-                                <td align="center"></td>
-                              )}
+                              <Status data={item} getOrders={getOrders} />
                             </tr>
                           );
                         })}

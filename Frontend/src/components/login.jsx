@@ -20,23 +20,27 @@ const Login = ({ loadUser, onRouteChange }) => {
     navigate("/");
   };
   const onSubmitLogIn = async () => {
-    const response = await fetch("http://localhost:4000/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: signInEmail, password: signInPassword }),
-    });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      localStorage.setItem("token", json.authtoken);
-      localStorage.setItem("role", json.role);
-      handleClick();
-    } else if (json === "Invalid") {
-      Swal.fire({
-        icon: "warning",
-        title: "Invalid Credentials",
-        text: "",
+    try {
+      const response = await fetch("http://localhost:4000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: signInEmail, password: signInPassword }),
       });
+      const json = await response.json();
+      console.log(json);
+      if (json.success) {
+        localStorage.setItem("token", json.authtoken);
+        localStorage.setItem("role", json.role);
+        handleClick();
+      } else if (json === "Invalid") {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Credentials",
+          text: "",
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   };
 

@@ -30,17 +30,20 @@ const Checkout = () => {
 
   const placeOrder = async () => {
     try {
-      console.log(data);
       let products = [];
-      data.map((item) => {
+
+      data.forEach((item) => {
+        const updatedPrice = shipping ? item.price + 5 : item.price;
+
         products.push({
           productId: item.productId,
           productName: item.productName,
-          price: item.price,
+          price: updatedPrice,
           quantity: item.quantity,
           description: item.description,
           farmer_id: item.farmer_id,
           image: item.image,
+          shipping: shipping,
         });
       });
       const response = await fetch("http://localhost:4000/api/order/place", {
@@ -156,6 +159,12 @@ const Checkout = () => {
                   </h3>
                 </div>
                 <div className="d-flex align-items-center mb-4">
+                  <h5 className="mb-0 black_color">Discount</h5>
+                  <h3 className="ml-auto mb-0 font-weight-bold black_color">
+                    <span className="black_color">0</span>
+                  </h3>
+                </div>
+                <div className="d-flex align-items-center mb-4">
                   <h5 className="mb-0 black_color">Total Item</h5>
                   <h3 className="ml-auto mb-0 font-weight-bold black_color">
                     <span className="black_color"> {data.length}</span>
@@ -171,7 +180,7 @@ const Checkout = () => {
                   <h5 className="mb-0 black_color">Total Amount</h5>
                   <h3 className="ml-auto mb-0 font-weight-bold">
                     <span className="text-g black_color">
-                      {!shipping ? totalPrice : totalPrice + 10}
+                      {!shipping ? totalPrice : totalPrice + data.length * 5}
                     </span>
                   </h3>
                 </div>

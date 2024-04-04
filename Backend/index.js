@@ -16,11 +16,18 @@ const port = 4000;
 //Authentication
 app.use("/api/auth", require("./routes/auth"));
 
+// Farmer
+
 //Listing
 app.use("/api/product", require("./routes/Farmer/listing.js"));
 
 //Manage Product
 app.use("/api/inventory", require("./routes/Farmer/inventory.js"));
+
+//Order Received
+app.use("/api/orderReceived", require("./routes/Farmer/OrderReceived.js"));
+
+// Buyer
 
 //View
 app.use("/api/product", require("./routes/Buyer/View.js"));

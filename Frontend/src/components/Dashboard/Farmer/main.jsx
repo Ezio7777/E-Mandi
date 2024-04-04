@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
 import Header from "./header";
 import Home from "../display";
-import Order from "./order";
+import Order from "./orderReceived";
 import Listing from "./listing";
 import Inventory from "./inventory";
 import Feedback from "./feedback";
@@ -27,7 +27,7 @@ import { IoClose } from "react-icons/io5";
 
 function Main() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-  const [option, setOption] = useState("inventory");
+  const [option, setOption] = useState("order");
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
