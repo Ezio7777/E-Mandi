@@ -52,6 +52,8 @@ const ReviewForm = (props) => {
               rating: reviewFields.rating,
               review: reviewFields.review,
               productId: item.productId,
+              orderId: item._id,
+              farmer_id: item.farmer_id,
             }),
           }
         );

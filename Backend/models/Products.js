@@ -17,7 +17,7 @@ const ProductSchema = new Schema({
   state: { type: String, required: true },
   city: { type: String, required: true },
   pin: { type: Number, required: true },
-  rating: { type: Number },
+  rating: { type: Number, default: 0 },
   image: { type: String },
   feedback: [],
   date: {

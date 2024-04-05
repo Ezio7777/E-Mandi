@@ -48,14 +48,6 @@ const History = () => {
                     in your order history
                   </p>
                 </div>
-                <button
-                  className="ml-auto clearCart d-flex align-items-center empty-cart-btn btn btn-outline-success"
-                  type="button"
-                  onClick={onHome}
-                >
-                  Continue Shopping &nbsp;
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </button>
               </div>
 
               <div className="cartWrapper mt-4">

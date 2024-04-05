@@ -55,6 +55,7 @@ const OrderSchema = new Schema({
   quantity: { type: String, required: true },
   description: { type: String, required: true },
   shipping: { type: Boolean },
+  feedback_done: { type: Boolean, default: false },
 
   //Order Status
   payment_method: { type: String },

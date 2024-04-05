@@ -132,7 +132,7 @@ const History = () => {
                                 )}
                               </td>
                               <td align="center" width="30%">
-                                {item.status === "delivered" && (
+                                {item.feedback_done === false ? (
                                   <button
                                     type="button"
                                     class="btn btn-outline-primary"
@@ -140,6 +140,10 @@ const History = () => {
                                   >
                                     Review
                                   </button>
+                                ) : (
+                                  <span className="text-g status status_delivered">
+                                    DONE
+                                  </span>
                                 )}
                               </td>
                             </tr>
