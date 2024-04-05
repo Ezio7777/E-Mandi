@@ -54,6 +54,9 @@ const ReviewForm = (props) => {
               productId: item.productId,
               orderId: item._id,
               farmer_id: item.farmer_id,
+              product_name: item.productName,
+              quantity: item.quantity,
+              price: item.price,
             }),
           }
         );

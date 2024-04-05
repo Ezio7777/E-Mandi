@@ -10,6 +10,7 @@ const fetchUser = require("../../middleware/fetchUserr.js");
 
 Router.post("/submit", fetchUser, async (req, res) => {
   try {
+    console.log(req.body);
     const user = await User.findById(req.user.id);
     const orderId = req.body.orderId;
     const name = user.name;
@@ -18,6 +19,9 @@ Router.post("/submit", fetchUser, async (req, res) => {
       review: req.body.review,
       rating: req.body.rating,
       productId: req.body.productId,
+      product_name: req.body.product_name,
+      quantity: req.body.quantity,
+      price: req.body.price,
       date: new Date(),
     };
     const feedbackId = await FeedBack.create(newFeedback);
