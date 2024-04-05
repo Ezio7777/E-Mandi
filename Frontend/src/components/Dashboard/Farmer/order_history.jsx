@@ -66,7 +66,7 @@ const History = () => {
                         <th>Product</th>
                         <th className="row_center">Date</th>
                         <th className="row_center">Status</th>
-                        <th className="row_center">Rate Product</th>
+                        <th className="row_center">FeedBacks</th>
                       </tr>
                     </thead>
 
@@ -93,7 +93,7 @@ const History = () => {
                                       <h4>{item.productName}</h4>
                                     </Link>
                                     <h4 className="myOrder_info myOrder_info_price">
-                                      RS. {item.price}
+                                      Profit - RS. {item.price}
                                     </h4>
                                     {item.quantity < 1 ? (
                                       <h4 className="myOrder_info">

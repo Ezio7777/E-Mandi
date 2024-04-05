@@ -47,6 +47,17 @@ const DetailTab = (props) => {
               Reviews ({data.feedback.length})
             </Button>
           </li>
+          <li className="list-inline-item">
+            <Button
+              className={`${activeTabs === 3 && "active"}`}
+              onClick={() => {
+                setActiveTabs(3);
+                // showReviews();
+              }}
+            >
+              FeedBack
+            </Button>
+          </li>
         </ul>
 
         <br />
@@ -57,6 +68,7 @@ const DetailTab = (props) => {
         )}
         {activeTabs === 1 && <Info data={data} />}
         {activeTabs === 2 && <Review data={data} />}
+        {activeTabs === 3 && <FeedBack data={data} />}
       </div>
     </div>
   );

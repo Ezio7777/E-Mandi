@@ -17,7 +17,6 @@ const port = 4000;
 app.use("/api/auth", require("./routes/auth"));
 
 // Farmer
-
 //Listing
 app.use("/api/product", require("./routes/Farmer/listing.js"));
 
@@ -31,7 +30,6 @@ app.use("/api/orderReceived", require("./routes/Farmer/OrderReceived.js"));
 app.use("/api/order_history", require("./routes/Farmer/order_history.js"));
 
 // Buyer
-
 //View
 app.use("/api/product", require("./routes/Buyer/View.js"));
 
@@ -46,6 +44,9 @@ app.use("/api/myOrder", require("./routes/Buyer/MyOrder.js"));
 
 //OrderHistory
 app.use("/api/history", require("./routes/Buyer/OrderHistory.js"));
+
+//Review
+app.use("/api/review", require("./routes/Buyer/AddReview.js"));
 
 //Listen
 app.listen(port, () => {

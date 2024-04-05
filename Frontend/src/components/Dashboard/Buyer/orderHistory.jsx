@@ -31,6 +31,10 @@ const History = () => {
   const onHome = () => {
     navigate("/");
   };
+  const onReview = (data) => {
+    console.log(data);
+    navigate("/addReview", { state: { data: data } });
+  };
 
   return (
     <>
@@ -132,6 +136,7 @@ const History = () => {
                                   <button
                                     type="button"
                                     class="btn btn-outline-primary"
+                                    onClick={() => onReview(item)}
                                   >
                                     Review
                                   </button>

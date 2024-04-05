@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import "./main.css";
@@ -9,26 +9,18 @@ import { FaShoppingBag } from "react-icons/fa";
 
 import MyOrder from "./myOrder";
 import OrderHistory from "./orderHistory";
-import Feedback from "./feedback";
+import Review from "./YourReview";
 import Setting from "./setting";
 
-import {
-  BsCart3,
-  BsGrid1X2Fill,
-  BsFillArchiveFill,
-  BsFillGrid3X3GapFill,
-  BsPeopleFill,
-  BsListCheck,
-  BsMenuButtonWideFill,
-  BsFillGearFill,
-  BsGearFill,
-} from "react-icons/bs";
+import { BsMenuButtonWideFill, BsGearFill } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 function Main() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-  const [option, setOption] = useState("listing");
+  const [option, setOption] = useState("order");
+
+  // const data = location.state.data;
 
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
@@ -112,9 +104,9 @@ function Main() {
           </li>
           <li
             className="sidebar-list-item"
-            onClick={() => handleOptionClick("feedback")}
+            onClick={() => handleOptionClick("review")}
           >
-            <BsMenuButtonWideFill className="icon" /> Feedback
+            <BsMenuButtonWideFill className="icon" /> Your Reviews
           </li>
           <li
             className="sidebar-list-item"
@@ -134,8 +126,8 @@ function Main() {
         <MyOrder />
       ) : option === "history" ? (
         <OrderHistory />
-      ) : option === "feedback" ? (
-        <Feedback />
+      ) : option === "review" ? (
+        <Review />
       ) : (
         <Setting />
       )}

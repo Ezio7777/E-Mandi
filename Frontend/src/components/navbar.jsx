@@ -5,34 +5,6 @@ import Swal from "sweetalert2";
 import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
-  const navigate = useNavigate();
-
-  // const onDashboard = async () => {
-  //   try {
-  //     const response = await fetch(`http://localhost:5000/api/dashboard/show`, {
-  //       method: "get",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "auth-token": localStorage.getItem("token"),
-  //       },
-  //     });
-  //     const json = await response.json();
-  //     if (json == null) {
-  //       Swal.fire({
-  //         icon: "warning",
-  //         title: "Not Enough Data",
-  //         text: "",
-  //       });
-  //     } else {
-  //       navigate("/dashboard", { state: { data: json } });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // Role
-
   const role = localStorage.getItem("role");
 
   return (
@@ -40,7 +12,7 @@ function Navbar() {
       {localStorage.getItem("token") ? (
         // Log In
         <>
-          <div className="navbar_body">
+          <div className="navbar_body container-fluid position-relative">
             <nav class="navbar navbar-expand-lg navbar-dark ">
               <div class="container">
                 {/* Logo */}

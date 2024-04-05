@@ -5,7 +5,7 @@
   border-radius: 25px;
   overflow: hidden;
   position: relative;
-  margin-top: 70px;
+  /* margin-top: 10px; */
 }
 
 .home_slider_Main .item {
@@ -30,9 +30,6 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .home_slider_Main {
-    margin-top: 65px;
-  }
   .home_slider_Main .item .info h2 {
     font-size: 60px;
   }
@@ -41,9 +38,6 @@
   }
 }
 @media screen and (max-width: 700px) {
-  .home_slider_Main {
-    margin-top: 60px;
-  }
   .home_slider_Main .item .info h2 {
     font-size: 40px;
   }
@@ -52,9 +46,6 @@
   }
 }
 @media screen and (max-width: 400px) {
-  .home_slider_Main {
-    margin-top: 50px;
-  }
   .home_slider_Main .item .info h2 {
     font-size: 25px;
   }

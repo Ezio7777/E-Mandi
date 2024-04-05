@@ -1,48 +1,59 @@
+/* Apply Poppins font to all elements */
 * {
   font-family: "Poppins", sans-serif;
 }
 
+/* Navbar body */
 .navbar_body {
   background-color: #23c686;
-  /* margin: 0 30px;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
-  border-radius: 13px;
-  
-  top: 20px;*/
   z-index: 999;
   width: 100%;
-  position: fixed;
+  position: absolute;
+  top: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
 
+/* Navbar brand */
 .navbar-brand {
-  font-size: 2rem;
-  margin-right: 3rem;
+  font-size: 1.8rem;
+  margin-right: 2rem;
 }
 
+/* Simple home brand */
 .simple_home_brand {
-  margin-right: 4rem;
+  margin-right: 3rem;
   margin-left: 1rem;
 }
 
+/* Navigation links */
 .nav_txt_hov {
   color: white;
   cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 20px;
 }
+
+/* Hover effect on navigation links */
 .nav_txt_hov:hover {
   background: #fbfcf6;
   color: #23c686;
   transition: all 0.2s ease-in-out;
 }
 
+/* Icon spacing within navigation links */
 .nav_txt_hov i {
-  padding: 0px 10px 0px 0px;
+  margin-right: 5px;
 }
 
+/* Profile navigation */
 .profile_nav {
-  font-size: 30px;
+  font-size: 24px;
 }
+
+/* Responsive adjustments for smaller screens */
 @media screen and (max-width: 700px) {
   .navbar_body {
-    margin-right: 20px;
+    padding: 10px;
   }
 }

@@ -15,7 +15,7 @@ Router.get("/show", fetchUser, async (req, res) => {
       const history = await Order.findById(historyIds.orderHistory[i]);
       historyData.push(history);
     }
-    console.log(historyData);
+
     // Send success response
     res.status(201).json({
       success: true,

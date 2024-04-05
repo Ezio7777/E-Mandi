@@ -17,14 +17,13 @@ import Related from "./RelateProduct/related.jsx";
 const DetailsPage = (props) => {
   const location = useLocation();
   const data = location.state.data;
-  const image = location.state.image;
 
   return (
     <>
       <section className="detailsPage mb-5">
         <div className="container detailsContainer pt-3 pb-3">
           {/* OverView Of the Product */}
-          <View data={data} image={image} />
+          <View data={data} />
 
           <br />
           {/* Tabs */}

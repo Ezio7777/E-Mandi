@@ -11,7 +11,6 @@ import CartBtn from "../CartBtn/cartBtn";
 const View = (props) => {
   const role = localStorage.getItem("role");
   const data = props.data;
-  const image = props.image;
 
   const zoomSliderBig = useRef();
   var settings2 = {
@@ -65,7 +64,7 @@ const View = (props) => {
         <div className="productZoom">
           <Slider {...settings2} className="zoomSliderBig" ref={zoomSliderBig}>
             <div className="item">
-              <InnerImageZoom zoomType="hover" zoomScale={1} src={image} />
+              <InnerImageZoom zoomType="hover" zoomScale={1} src={data.image} />
             </div>
           </Slider>
         </div>
@@ -125,7 +124,7 @@ const View = (props) => {
               price={price}
               quantity={quantity}
               sendQ={sendQuantity}
-              image={image}
+              image={data.image}
             />
           </div>
         )}

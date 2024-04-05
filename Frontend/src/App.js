@@ -12,6 +12,7 @@ import BuyerDashboard from "./components/Dashboard/Buyer/main.jsx";
 import Cart from "./components/cart/cart.jsx";
 import Checkout from "./components/checkout/check.jsx";
 import Detail from "./components/Details/details.jsx";
+import AddReview from "./components/addReview/addReview.jsx";
 
 import "./App.css";
 
@@ -120,6 +121,15 @@ function App() {
             <>
               <Navbar />
               <Detail />
+            </>
+          }
+        />
+        <Route
+          path="/addReview"
+          element={
+            <>
+              <Navbar />
+              <AddReview />
             </>
           }
         />

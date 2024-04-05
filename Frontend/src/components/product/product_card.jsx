@@ -6,25 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const Product = (props) => {
-  //   const [productData, setProductData] = useState();
-  //   const [isAdded, setIsadded] = useState(false);
-
-  //   const context = useContext(MyContext);
-
-  //   useEffect(() => {
-  //     setProductData(props.item);
-  //   }, [props.item]);
-
-  //   const setProductCat = () => {
-  //     sessionStorage.setItem("parentCat", productData.parentCatName);
-  //     sessionStorage.setItem("subCatName", productData.subCatName);
-  //   };
-
-  //   const addToCart = (item) => {
-  //     context.addToCart(item);
-  //     setIsadded(true);
-  //   };
-
   const navigate = useNavigate();
 
   const role = localStorage.getItem("role");
@@ -43,7 +24,7 @@ const Product = (props) => {
   };
 
   const onDetail = () => {
-    navigate("/details", { state: { data: product, image: data.image } });
+    navigate("/details", { state: { data: product } });
   };
 
   return (

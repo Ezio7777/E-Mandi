@@ -22,41 +22,32 @@ const Feedback = (props) => {
     <div className="tabContent">
       <div className="row">
         <div className="col-md-8">
-          <h3>Customer questions & answers</h3>
-          <br />
+          {/* <div className="card p-4 reviewsCard flex-row">
+            <div className="image">
+              <div className="rounded-circle">
+                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-2.png" />
+              </div>
+              <span className="text-g d-block text-center font-weight-bold">
+                ankush
+              </span>
+            </div>
 
-          {reviewsArr.length !== 0 &&
-            reviewsArr !== undefined &&
-            reviewsArr.map((item, index) => {
-              return (
-                <div className="card p-4 reviewsCard flex-row" key={index}>
-                  <div className="image">
-                    <div className="rounded-circle">
-                      <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-2.png" />
-                    </div>
-                    <span className="text-g d-block text-center font-weight-bold">
-                      {item.userName}
-                    </span>
-                  </div>
-
-                  <div className="info pl-5">
-                    <div className="d-flex align-items-center w-100">
-                      <h5 className="text-light">{item.date}</h5>
-                      <div className="ml-auto">
-                        <Rating
-                          name="half-rating-read"
-                          value={parseFloat(item.rating)}
-                          precision={0.5}
-                          readOnly
-                        />
-                      </div>
-                    </div>
-
-                    <p>{item.review} </p>
-                  </div>
+            <div className="info pl-5">
+              <div className="d-flex align-items-center w-100">
+                <h5 className="text-light">{2 / 2 / 2}</h5>
+                <div className="ml-auto">
+                  <Rating
+                    name="half-rating-read"
+                    value={parseFloat(1)}
+                    precision={0.5}
+                    readOnly
+                  />
                 </div>
-              );
-            })}
+              </div>
+
+              <p>awesome product </p>
+            </div>
+          </div> */}
 
           <br className="res-hide" />
 
