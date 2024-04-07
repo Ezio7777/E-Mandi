@@ -1,110 +1,124 @@
-import React from "react";
-import { useState } from "react";
-import "../details.css";
-
+import React, { useEffect, useState } from "react";
+import "./feedback.css";
+import Swal from "sweetalert2";
 import Rating from "@mui/material/Rating";
-
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
-
-import { Button } from "@mui/material";
+import User_img from "../../../data/user_img.png";
 
 const Feedback = (props) => {
-  const [reviewsArr, setReviewsArr] = useState([]);
-  const [reviewFields, setReviewFields] = useState({
-    review: "This IS a review",
-    userName: "@buyer123",
-    rating: 3.5,
-    productId: 0,
-    date: "30/3/2024",
-  });
-  const data = props.data;
+  console.log(props.data);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/api/product/feedback",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem("token"),
+            },
+            body: JSON.stringify({
+              id: props.data,
+            }),
+          }
+        );
+        const json = await response.json();
+        if (json.success) {
+          setData(json.feedbacks);
+          console.log(json.feedbacks);
+        } else {
+          console.error("Error fetching product details:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching product details:", error.message);
+      }
+    };
+
+    // Call fetchData function when component mounts
+    fetchData();
+  }, [props.data]);
+
   return (
-    <div className="tabContent">
-      <div className="row">
-        <div className="col-md-8">
-          {/* <div className="card p-4 reviewsCard flex-row">
-            <div className="image">
-              <div className="rounded-circle">
-                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/blog/author-2.png" />
-              </div>
-              <span className="text-g d-block text-center font-weight-bold">
-                ankush
-              </span>
-            </div>
-
-            <div className="info pl-5">
+    <>
+      <section className="cartSection mb-5">
+        <div className="container-fluid">
+          <div className="row inventory_body">
+            <div className="">
               <div className="d-flex align-items-center w-100">
-                <h5 className="text-light">{2 / 2 / 2}</h5>
-                <div className="ml-auto">
-                  <Rating
-                    name="half-rating-read"
-                    value={parseFloat(1)}
-                    precision={0.5}
-                    readOnly
-                  />
+                <div className="left">
+                  <h1 className="hd mb-0 cart_head">Reviews</h1>
+                  <p className="cart_head_sub">
+                    There are <span className="text-g">{data.length}</span>
+                    &nbsp; Reviews
+                  </p>
                 </div>
               </div>
 
-              <p>awesome product </p>
-            </div>
-          </div> */}
+              <div className="cartWrapper mt-4">
+                <div className="table-responsive">
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>Customer</th>
+                        <th className="row_center">Date</th>
+                        <th className="row_center">Rating</th>
+                        <th className="row_center">Review</th>
+                      </tr>
+                    </thead>
 
-          <br className="res-hide" />
+                    <tbody>
+                      {data.length !== 0 &&
+                        [...data].reverse().map((item, index) => {
+                          return (
+                            <tr>
+                              <td width="5%">
+                                <div className="reviewsCard flex-row get_elements_center">
+                                  <div className="image m-1">
+                                    <div className="rounded-circle">
+                                      <img src={User_img} />
+                                    </div>
+                                  </div>
 
-          <br className="res-hide" />
+                                  <div className="info">
+                                    <p className="text-g d-block p-1 font-weight-bold">
+                                      {item.name}
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td width="10%" align="center">
+                                <h5 className="text-dark">
+                                  {new Date(item.date).toLocaleDateString()}
+                                </h5>
+                              </td>
 
-          <form className="reviewForm">
-            <h4>Add a review</h4> <br />
-            <div className="form-group">
-              <textarea
-                className="form-control"
-                placeholder="Write a Review"
-                name="review"
-                value={reviewFields.review}
-                // onChange={(e) =>
-                //   changeInput(e.target.name, e.target.value)
-                // }
-              ></textarea>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    value={reviewFields.userName}
-                    className="form-control"
-                    placeholder="Name"
-                    name="userName"
-                    // onChange={(e) =>
-                    //   changeInput(e.target.name, e.target.value)
-                    // }
-                  />
+                              <td align="center" width="20%">
+                                <div className="d-flex align-items-center w-100  rating_show get_elements_center">
+                                  <Rating
+                                    className="review_rating"
+                                    name="half-rating-read"
+                                    value={item.rating}
+                                    precision={0.5}
+                                    readOnly
+                                  />
+                                </div>
+                              </td>
+                              <td width={"20%"}>
+                                <p>"{item.review}"</p>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
                 </div>
               </div>
-
-              <div className="col-md-6">
-                <div className="form-group">
-                  <Rating
-                    name="rating"
-                    value={data.rating}
-                    precision={0.5}
-                    // onChange={(e) =>
-                    //   changeInput(e.target.name, e.target.value)
-                    // }
-                  />
-                </div>
-              </div>
             </div>
-            <br />
-            <div className="form-group">
-              <Button type="submit" className="btn-g btn-lg">
-                Submit Review
-              </Button>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 

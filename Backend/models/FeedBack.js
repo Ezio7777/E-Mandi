@@ -26,6 +26,7 @@ const FeedbackSchema = new Schema({
   product_name: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
+  image: { type: String, required: true },
 });
 
 const Feedback = mongoose.model("Feedback", FeedbackSchema);

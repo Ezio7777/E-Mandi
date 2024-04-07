@@ -11,7 +11,7 @@ import { Button } from "@mui/material";
 
 const DetailTab = (props) => {
   const data = props.data;
-  const [activeTabs, setActiveTabs] = useState(0);
+  const [activeTabs, setActiveTabs] = useState(2);
   return (
     <div className="container mt-5 p-5 detailsPageTabs">
       <div className="customTabs">
@@ -47,17 +47,6 @@ const DetailTab = (props) => {
               Reviews ({data.feedback.length})
             </Button>
           </li>
-          <li className="list-inline-item">
-            <Button
-              className={`${activeTabs === 3 && "active"}`}
-              onClick={() => {
-                setActiveTabs(3);
-                // showReviews();
-              }}
-            >
-              FeedBack
-            </Button>
-          </li>
         </ul>
 
         <br />
@@ -67,8 +56,7 @@ const DetailTab = (props) => {
           </div>
         )}
         {activeTabs === 1 && <Info data={data} />}
-        {activeTabs === 2 && <Review data={data} />}
-        {activeTabs === 3 && <FeedBack data={data} />}
+        {activeTabs === 2 && <FeedBack data={data.feedback} />}
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ Router.post("/submit", fetchUser, async (req, res) => {
       quantity: req.body.quantity,
       price: req.body.price,
       date: new Date(),
+      image: req.body.image,
     };
     const feedbackId = await FeedBack.create(newFeedback);
     await Order.findByIdAndUpdate(orderId, {

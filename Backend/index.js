@@ -48,8 +48,18 @@ app.use("/api/myOrder", require("./routes/Buyer/MyOrder.js"));
 //OrderHistory
 app.use("/api/history", require("./routes/Buyer/OrderHistory.js"));
 
-//Review
+//ADD Review
 app.use("/api/review", require("./routes/Buyer/AddReview.js"));
+
+// Show Reviews
+app.use("/api/review", require("./routes/Buyer/Review.js"));
+
+// Product
+// ProductDetails
+app.use("/api/product", require("./routes/Product/Details.js"));
+
+//feedback
+app.use("/api/product", require("./routes/Product/Feedbacks.js"));
 
 //Listen
 app.listen(port, () => {

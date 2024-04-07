@@ -57,12 +57,12 @@ const ReviewForm = (props) => {
               product_name: item.productName,
               quantity: item.quantity,
               price: item.price,
+              image: item.image,
             }),
           }
         );
 
         const json = await response.json();
-        console.log(json);
         if (json.success) {
           Swal.fire({
             icon: "success",

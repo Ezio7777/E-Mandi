@@ -81,7 +81,7 @@ const View = (props) => {
             precision={0.5}
             readOnly
           />
-          <span className=" ml-2">({data.feedback.length})</span>
+          <span className=" ml-2">({data.rating})</span>
         </div>
 
         <div className="priceSec d-flex align-items-center mb-3">

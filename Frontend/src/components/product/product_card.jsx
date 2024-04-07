@@ -24,7 +24,7 @@ const Product = (props) => {
   };
 
   const onDetail = () => {
-    navigate("/details", { state: { data: product } });
+    navigate("/details", { state: { id: product._id } });
   };
 
   return (
