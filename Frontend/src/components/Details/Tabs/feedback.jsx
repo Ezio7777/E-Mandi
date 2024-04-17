@@ -5,7 +5,6 @@ import Rating from "@mui/material/Rating";
 import User_img from "../../../data/user_img.png";
 
 const Feedback = (props) => {
-  console.log(props.data);
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

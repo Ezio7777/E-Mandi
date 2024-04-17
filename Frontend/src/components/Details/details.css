@@ -259,3 +259,10 @@ input::-webkit-inner-spin-button {
   align-items: center;
   justify-content: center;
 }
+
+/* add */
+
+.veg_img {
+  height: 20px;
+  width: 20px;
+}
