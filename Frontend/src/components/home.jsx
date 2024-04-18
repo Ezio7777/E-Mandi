@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import Hero from "./Hero/hero";
-import Navbar from "./navbar";
+import Navbar from "./Navbar/navbar";
 import Product from "./product/product";
 import Top from "./TopBar/top";
+import Nav from "./Navbar/nav";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -81,7 +82,8 @@ const Home = () => {
   }
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Nav />
       <Hero />
 
       {top.length > 0 && (

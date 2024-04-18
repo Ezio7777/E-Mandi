@@ -1,7 +1,7 @@
 /* main */
 .product {
   display: flex;
-  padding: 30px 0px;
+  padding-bottom: 30px;
 
   flex-wrap: wrap;
 }

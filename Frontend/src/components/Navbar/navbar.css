@@ -1,15 +1,10 @@
-/* Apply Poppins font to all elements */
 * {
   font-family: "Poppins", sans-serif;
 }
 
 /* Navbar body */
 .navbar_body {
-  background-color: #23c686;
-  z-index: 999;
-  width: 100%;
-  position: absolute;
-  top: 0;
+  background-color: #23c686 !important;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -17,6 +12,7 @@
 .navbar-brand {
   font-size: 1.8rem;
   margin-right: 2rem;
+  color: white;
 }
 
 /* Simple home brand */
@@ -29,7 +25,7 @@
 .nav_txt_hov {
   color: white;
   cursor: pointer;
-  padding: 10px 15px;
+  /* padding: 10px 15px; */
   border-radius: 20px;
 }
 
@@ -55,4 +51,31 @@
   .navbar_body {
     padding: 10px;
   }
+}
+
+input[type="search"] {
+  background-color: white !important; /* Set the background color for unfocused state */
+  color: black;
+}
+
+input[type="search"]:focus {
+  background-color: white; /* Set the background color for focused state */
+}
+
+.search-body {
+  width: auto;
+  border: 0 !important;
+}
+.search-btn {
+  color: #23c686;
+  background: white;
+  margin-left: 5px;
+}
+.search-btn:hover {
+  color: #23c686;
+  background: rgb(246, 246, 246);
+}
+
+.off-canvas-body {
+  background-color: #23c686 !important;
 }

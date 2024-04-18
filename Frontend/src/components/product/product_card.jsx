@@ -43,26 +43,6 @@ const Product = (props) => {
                   className="w-100"
                 />
               </div>
-
-              {/* <div className='overlay transition'>
-                                <ul className='list list-inline mb-0'>
-                                    <li className='list-inline-item'>
-                                        <a className='cursor' tooltip="Add to Wishlist">
-                                            <FavoriteBorderOutlinedIcon />
-                                        </a>
-                                    </li>
-                                    <li className='list-inline-item'>
-                                        <a className='cursor' tooltip="Compare">
-                                            <CompareArrowsOutlinedIcon />
-                                        </a>
-                                    </li>
-                                    <li className='list-inline-item'>
-                                        <a className='cursor' tooltip="Quick View">
-                                            <RemoveRedEyeOutlinedIcon />
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div> */}
             </div>
           </div>
 
