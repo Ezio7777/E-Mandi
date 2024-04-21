@@ -61,6 +61,9 @@ app.use("/api/product", require("./routes/Product/Details.js"));
 //feedback
 app.use("/api/product", require("./routes/Product/Feedbacks.js"));
 
+//SearchBar
+app.use("/api/search", require("./routes/SearchBar/search.js"));
+
 //Listen
 app.listen(port, () => {
   console.log(`connected with port no: ${port}`);

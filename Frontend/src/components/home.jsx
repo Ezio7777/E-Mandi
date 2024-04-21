@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import Hero from "./Hero/hero";
-import Navbar from "./Navbar/navbar";
 import Product from "./product/product";
 import Top from "./TopBar/top";
 import Nav from "./Navbar/nav";
@@ -66,24 +65,18 @@ const Home = () => {
     fetchData();
   }, [token]); // Call useEffect when token changes
 
-  function checkAuthJoin() {
-    if (!token) {
-      navigate("/signup");
-    } else {
-      navigate("/join");
-    }
-  }
-  function checkAuthHost() {
-    if (!token) {
-      navigate("/signup");
-    } else {
-      navigate("/host");
-    }
-  }
+  const [searchData, setSearchData] = useState([]);
+
   return (
     <>
       {/* <Navbar /> */}
-      <Nav />
+      <Nav setSearchData={setSearchData} />
+      {searchData.length !== 0 && (
+        <>
+          <Top name={"Search Items"} />
+          <Product data={searchData} />
+        </>
+      )}
       <Hero />
 
       {top.length > 0 && (

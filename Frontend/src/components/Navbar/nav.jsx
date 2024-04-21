@@ -7,12 +7,68 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 import "./navbar.css";
 
-function OffcanvasExample() {
-  let expand = "md";
+const Navigation = (props) => {
+  let expand = "xl";
   const role = localStorage.getItem("role");
+
+  const [searchItem, setSearchItem] = useState([]);
+
+  const onSearch = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/search/show/${searchItem}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+        }
+      );
+
+      if (!response.ok) {
+        // Handle non-successful response (status code other than 2xx)
+        if (response.status === 404) {
+          // Handle 404 Not Found
+          Swal.fire({
+            title: "Not Found",
+            text: `Product with name '${searchItem}' not found`,
+            icon: "error",
+          });
+          props.setSearchData([]); // Clear searchData state
+        } else {
+          // Handle other error statuses (e.g., 500 Internal Server Error)
+          Swal.fire({
+            title: "Error",
+            text: `Failed to fetch data (${response.status})`,
+            icon: "error",
+          });
+        }
+      } else {
+        // Successful response (status code 2xx)
+        const json = await response.json();
+        props.setSearchData(json); // Update searchData state with response data
+      }
+    } catch (error) {
+      // Handle network errors or exceptions
+      console.error("Error fetching data:", error.message);
+      Swal.fire({
+        title: "Error",
+        text: "Failed to fetch data. Please try again later.",
+        icon: "error",
+      });
+    }
+  };
+
+  const onItem = (event) => {
+    setSearchItem(event.target.value);
+  };
+
   return (
     <>
       <Navbar
@@ -32,7 +88,7 @@ function OffcanvasExample() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Offcanvas
+                E-Mandi
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="off-canvas-body">
@@ -66,8 +122,13 @@ function OffcanvasExample() {
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  onChange={onItem}
                 />
-                <button type="button" class="btn search-btn ">
+                <button
+                  type="button"
+                  class="btn search-btn "
+                  onClick={onSearch}
+                >
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </Form>
@@ -128,6 +189,6 @@ function OffcanvasExample() {
       </Navbar>
     </>
   );
-}
+};
 
-export default OffcanvasExample;
+export default Navigation;
