@@ -1,6 +1,7 @@
 import React from "react";
 
 import Navbar from "./components/Navbar/nav.jsx";
+import Navbar2 from "./components/Navbar/nav2.jsx";
 import Footer from "./components/footer.jsx";
 import Home from "./components/home.jsx";
 import Login from "./components/login.jsx";
@@ -13,6 +14,7 @@ import Cart from "./components/cart/cart.jsx";
 import Checkout from "./components/checkout/check.jsx";
 import Detail from "./components/Details/details.jsx";
 import AddReview from "./components/addReview/addReview.jsx";
+import Payment from "./components/payment/payment.jsx";
 
 import "./App.css";
 
@@ -45,7 +47,7 @@ function App() {
           path="/signup"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
               <Signup />
             </>
           }
@@ -54,7 +56,7 @@ function App() {
           path="/login"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
               <Login />
               <Footer />
             </>
@@ -64,7 +66,7 @@ function App() {
           path="/about"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
             </>
           }
         />
@@ -72,7 +74,7 @@ function App() {
           path="/contact"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
               <ContactUs />
               <Footer />
             </>
@@ -101,7 +103,7 @@ function App() {
           path="/cart"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
               <Cart />
             </>
           }
@@ -110,7 +112,7 @@ function App() {
           path="/checkout"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
               <Checkout />
             </>
           }
@@ -119,7 +121,7 @@ function App() {
           path="/details"
           element={
             <>
-              <Navbar />
+              <Navbar2 />
               <Detail />
             </>
           }
@@ -130,6 +132,15 @@ function App() {
             <>
               <Navbar />
               <AddReview />
+            </>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <>
+              <Navbar />
+              <Payment />
             </>
           }
         />

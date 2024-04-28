@@ -5,6 +5,7 @@ import Hero from "./Hero/hero";
 import Product from "./product/product";
 import Top from "./TopBar/top";
 import Nav from "./Navbar/nav";
+import Key from "../Key/key";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Home = () => {
     // Fetch data from your backend API
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/product/view", {
+        const response = await fetch(Key.home, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

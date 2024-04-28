@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-import imgData from "../../../data/product_img_data";
-
 const Setting = () => {
   const [name, setName] = useState("");
   const [PHno, setPHno] = useState("");

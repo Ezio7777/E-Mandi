@@ -18,10 +18,18 @@ Router.post("/place", fetchUser, async (req, res) => {
     if (!buyer) {
       return res.status(404).json({ error: "Buyer not found" });
     }
-
-    const bCity = buyer.city;
-    const bState = buyer.state;
-    const bPin = buyer.pin;
+    let bCity = buyer.city;
+    let bState = buyer.state;
+    let bPin = buyer.pin;
+    let bPhno = buyer.phno;
+    let bName = buyer.name;
+    if (req.body.address === "new") {
+      bCity = req.body.city;
+      bState = req.body.state;
+      bPin = req.body.pin;
+      bPhno = req.body.PHno;
+      bName = req.body.name;
+    }
 
     const products = req.body.products;
 
@@ -38,8 +46,8 @@ Router.post("/place", fetchUser, async (req, res) => {
         OTP: code,
         deliver: false,
         buyer_id: req.user.id,
-        buyer_name: buyer.name,
-        buyer_ph: buyer.phno,
+        buyer_name: bName,
+        buyer_ph: bPhno,
         buyer_address: {
           city: bCity,
           state: bState,

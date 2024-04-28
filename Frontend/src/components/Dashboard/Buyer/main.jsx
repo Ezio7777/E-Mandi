@@ -10,7 +10,7 @@ import { FaShoppingBag } from "react-icons/fa";
 import MyOrder from "./myOrder";
 import OrderHistory from "./orderHistory";
 import Review from "./YourReview";
-import Setting from "./setting";
+import Setting from "../Farmer/setting";
 
 import { BsMenuButtonWideFill, BsGearFill } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";

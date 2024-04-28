@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./check.css";
+
 import Swal from "sweetalert2";
 
 const Checkout = () => {
@@ -12,29 +13,137 @@ const Checkout = () => {
   const shipping = location.state.shipping;
   const navigate = useNavigate();
 
-  const [formFields, setformFields] = useState({
-    name: "",
-    pincode: "",
-    address: "",
-    phoneNumber: "",
-  });
+  const [name, setName] = useState("");
+  const [PHno, setPHno] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [pin, setPin] = useState("");
+  const [activeButton, setActiveButton] = useState(null);
 
-  const changeInput = (e) => {
-    const { name, value } = e.target;
+  const handleNewAddressClick = () => {
+    setActiveButton("new");
+    // Call your onNewAddress function here
+    // Example: onNewAddress();
+  };
 
-    setformFields(() => ({
-      ...formFields,
-      [name]: value,
-    }));
+  const handleDefaultAddressClick = () => {
+    setActiveButton("default");
+    // Call your onDefaultAddress function here
+    // Example: onDefaultAddress();
+  };
+
+  const States = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Delhi",
+    "Lakshadweep",
+    "Puducherry",
+  ];
+
+  const onNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const onPHnoChange = (event) => {
+    setPHno(event.target.value);
+  };
+
+  const onStateChange = (event) => {
+    setState(event.target.value);
+  };
+  const onCityChange = (event) => {
+    setCity(event.target.value);
+  };
+  const onPinChange = (event) => {
+    setPin(event.target.value);
+  };
+
+  const validateName = () => {
+    return name.length >= 3;
+  };
+
+  const validatePHno = () => {
+    const pattern = /^\d{10}$/;
+
+    // Test the number against the pattern
+    return pattern.test(PHno);
+  };
+
+  const validateCity = () => {
+    return city.trim() !== "";
+  };
+
+  const validateState = () => {
+    const validStates = States;
+    return validStates.includes(state.trim());
+  };
+
+  const validatePin = () => {
+    return /^\d{6}$/.test(pin);
+  };
+
+  function inputHandel(e) {
+    e.preventDefault();
+  }
+  const goCart = () => {
+    navigate("/cart");
+  };
+
+  const onContinue = () => {
+    if (
+      validateCity() &&
+      validateName() &&
+      validatePin &&
+      validateState() &&
+      validatePHno() &&
+      activeButton === "new"
+    ) {
+      placeOrder();
+    } else if (activeButton === "default") {
+      placeOrder();
+      console.log(data);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Select Address",
+        text: "",
+      });
+    }
   };
 
   const placeOrder = async () => {
     try {
       let products = [];
-
       data.forEach((item) => {
         const updatedPrice = shipping ? item.price + 5 : item.price;
-
         products.push({
           productId: item.productId,
           productName: item.productName,
@@ -53,9 +162,14 @@ const Checkout = () => {
           "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({
+          address: activeButton,
+          name: name,
+          PHno: PHno,
+          state: state,
+          city: city,
+          pin: pin,
           price: data.price,
           cat: data.cat,
-
           buyer_id: data.buyer_id,
           buyerName: data.buyerName,
           date: data.date,
@@ -90,54 +204,109 @@ const Checkout = () => {
         <form>
           <div className="row check_body">
             <div className="col-md-8">
-              <div className="form w-75 mt-4 shadow">
-                <h3>Shopping Address</h3>
-                <div className="form-group mb-3 mt-4">
-                  <TextField
-                    id="outlined-basic"
-                    label="Enter Full Name"
-                    variant="outlined"
-                    className="w-100"
-                    value={formFields.name}
-                    onChange={changeInput}
-                    name="name"
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <TextField
-                    id="outlined-basic"
-                    label="Enter Pincode"
-                    variant="outlined"
-                    className="w-100"
-                    value={formFields.pincode}
-                    onChange={changeInput}
-                    name="pincode"
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <TextField
-                    id="outlined-basic"
-                    label="Enter Phone Number."
-                    variant="outlined"
-                    className="w-100"
-                    value={formFields.phoneNumber}
-                    onChange={changeInput}
-                    name="phoneNumber"
-                  />
-                </div>
-                <div className="form-group">
-                  <TextField
-                    id="outlined-basic"
-                    label="Enter Full Address"
-                    variant="outlined"
-                    className="w-100"
-                    multiline
-                    rows={4}
-                    value={formFields.address}
-                    onChange={changeInput}
-                    name="address"
-                  />
-                </div>
+              <div className="address_body">
+                <h1 className="address_heading container">Delivery Address</h1>
+                <form className="container list_body" onClick={inputHandel}>
+                  <div class="form-row list_main row">
+                    <div class="col-sm-12 col-md-6 ">
+                      <label for="validationServer01">Name</label>
+                      <input
+                        type="text"
+                        className={
+                          validateName()
+                            ? "form-control is-valid"
+                            : "form-control is-invalid"
+                        }
+                        id="validationServer01"
+                        placeholder="Name"
+                        required
+                        onChange={onNameChange}
+                      />
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 ">
+                      <label for="validationServer02">Phone No.</label>
+                      <input
+                        type="text"
+                        className={
+                          validatePHno()
+                            ? "form-control is-valid"
+                            : "form-control is-invalid"
+                        }
+                        id="validationServer02"
+                        placeholder="10-Digit"
+                        onChange={onPHnoChange}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row row">
+                    <div class="col-sm-12 col-md-6 ">
+                      <label for="validationServer03">City</label>
+                      <input
+                        type="text"
+                        className={
+                          validateCity()
+                            ? "form-control is-valid"
+                            : "form-control is-invalid"
+                        }
+                        id="validationServer03"
+                        placeholder="City"
+                        required
+                        onChange={onCityChange}
+                      />
+                    </div>
+                    <div class="col-sm-12 col-md-6 ">
+                      <label for="validationServer04">State</label>
+                      <input
+                        type="text"
+                        className={
+                          validateState()
+                            ? "form-control is-valid"
+                            : "form-control is-invalid"
+                        }
+                        id="validationServer04"
+                        placeholder="State"
+                        required
+                        onChange={onStateChange}
+                      />
+                    </div>
+                    <div class="col-sm-12 col-md-6 ">
+                      <label for="validationServer05">Pin Code</label>
+                      <input
+                        type="text"
+                        className={
+                          validatePin()
+                            ? "form-control is-valid"
+                            : "form-control is-invalid"
+                        }
+                        id="validationServer05"
+                        placeholder="Pin Code"
+                        required
+                        onChange={onPinChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="address_btn">
+                    <button
+                      className={`btn btn-outline-success address_buttons ${
+                        activeButton === "new" ? "active" : ""
+                      }`}
+                      onClick={handleNewAddressClick}
+                    >
+                      Use New Address
+                    </button>
+                    <button
+                      className={`btn btn-outline-success address_buttons ${
+                        activeButton === "default" ? "active" : ""
+                      }`}
+                      onClick={handleDefaultAddressClick}
+                    >
+                      Use Default Address
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
 
@@ -187,12 +356,20 @@ const Checkout = () => {
                 <br />
                 <Button
                   className="btn-g btn-lg proceed-btn"
-                  onClick={placeOrder}
+                  onClick={onContinue}
                 >
-                  Make Payment
+                  Place Order
                 </Button>
               </div>
             </div>
+          </div>
+          <div className="row container go_cart">
+            <Button
+              className="btn-g btn-lg proceed-btn go_to_cart_btn"
+              onClick={goCart}
+            >
+              <i class="fa-solid fa-arrow-left"></i> &nbsp; Cart
+            </Button>
           </div>
         </form>
       </div>
