@@ -116,7 +116,7 @@ const Navigation = (props) => {
                   Contact
                 </Link>
               </Nav>
-              <Form className="d-flex search-body container">
+              <div className="d-flex search-body container">
                 <input
                   class="form-control mr-sm-2"
                   type="search"
@@ -131,7 +131,7 @@ const Navigation = (props) => {
                 >
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-              </Form>
+              </div>
               {localStorage.getItem("token") ? (
                 <>
                   <div className=" d-flex flex-column flex-lg-row  justify-content-center align-items-center gap-3 ">

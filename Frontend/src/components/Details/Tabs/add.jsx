@@ -45,7 +45,11 @@ function info(props) {
             <tr class="frame">
               <th>Available Stock</th>
               <td>
-                <p>{data.CurQuantity}KG</p>
+                {data.CurQuantity >= 2 ? (
+                  <p>{data.CurQuantity}KG</p>
+                ) : (
+                  <p>Out Of Stock</p>
+                )}
               </td>
             </tr>
             <tr class="weight-wo-wheels">

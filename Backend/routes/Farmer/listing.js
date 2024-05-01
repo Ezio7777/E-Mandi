@@ -19,9 +19,9 @@ router.post("/listing", fetchUser, async (req, res) => {
       description: req.body.description,
       price: req.body.price,
       cat: req.body.cat,
-      state: req.body.state,
-      city: req.body.city,
-      pin: req.body.pin,
+      state: user.state,
+      city: user.city,
+      pin: user.pin,
       image: req.body.image,
     };
     //Create the new product

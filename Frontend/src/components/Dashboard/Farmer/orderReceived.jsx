@@ -97,7 +97,7 @@ const Order = () => {
 
                     <tbody>
                       {data.length !== 0 &&
-                        [...data].reverse().map(
+                        data.map(
                           (item, index) =>
                             item.status !== "delivered" && (
                               <tr key={index}>

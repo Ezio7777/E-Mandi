@@ -64,7 +64,7 @@ const History = () => {
 
                     <tbody>
                       {data.length !== 0 &&
-                        [...data].reverse().map((item, index) => {
+                        data.map((item, index) => {
                           return (
                             <tr>
                               <td width={"40%"}>

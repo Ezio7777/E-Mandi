@@ -303,74 +303,7 @@ const Listing = () => {
             <div class="valid-feedback">Looks good!</div>
           )}
         </div>
-        <div class="form-row row">
-          <div class="col-sm-12 col-md-6 ">
-            <label for="validationServer03">City</label>
-            <input
-              type="text"
-              className={
-                validateCity()
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              id="validationServer03"
-              placeholder="City"
-              required
-              onChange={onCityChange}
-            />
-            {!validateCity() ? (
-              <div className="invalid-feedback">
-                Please provide a valid city in India.
-              </div>
-            ) : (
-              <div class="valid-feedback">Looks good!</div>
-            )}
-          </div>
-          <div class="col-sm-12 col-md-6 ">
-            <label for="validationServer04">State</label>
-            <input
-              type="text"
-              className={
-                validateState()
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              id="validationServer04"
-              placeholder="State"
-              required
-              onChange={onStateChange}
-            />
-            {!validateState() ? (
-              <div className="invalid-feedback">
-                Please provide a valid state of India.
-              </div>
-            ) : (
-              <div class="valid-feedback">Looks good!</div>
-            )}
-          </div>
-          <div class="col-sm-12 col-md-6 ">
-            <label for="validationServer05">Pin Code</label>
-            <input
-              type="text"
-              className={
-                validatePin()
-                  ? "form-control is-valid"
-                  : "form-control is-invalid"
-              }
-              id="validationServer05"
-              placeholder="Pin Code"
-              required
-              onChange={onPinChange}
-            />
-            {!validatePin() ? (
-              <div className="invalid-feedback">
-                Please provide a valid 6-digit PIN code.
-              </div>
-            ) : (
-              <div class="valid-feedback">Looks good!</div>
-            )}
-          </div>
-        </div>
+
         <div class="form-group">
           {/* <div class="form-check">
             <input

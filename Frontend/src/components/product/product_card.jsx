@@ -74,9 +74,10 @@ const Product = (props) => {
             ) : (
               <Button
                 className="w-100 transition mt-3"
+                onClick={onDetail}
                 //   onClick={() => addToCart(productData)}
               >
-                <ShoppingCartOutlinedIcon />
+                <i class="fa-solid fa-eye"></i>
                 {/* {isAdded === true ? "Added" : "Add"} */}
               </Button>
             )}

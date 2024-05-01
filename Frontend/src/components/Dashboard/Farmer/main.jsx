@@ -90,12 +90,12 @@ function Main() {
           <li className="sidebar-list-item" onClick={onHome}>
             <FaHome className="icon" /> Home
           </li>
-          <li
+          {/* <li
             className="sidebar-list-item"
             onClick={() => handleOptionClick("dashboard")}
           >
             <BsGrid1X2Fill className="icon" /> Dashboard
-          </li>
+          </li> */}
           <li
             className="sidebar-list-item"
             onClick={() => handleOptionClick("order")}

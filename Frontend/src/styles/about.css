@@ -64,7 +64,7 @@
   font-size: 3.4rem;
   line-height: 7rem;
   font-weight: 800;
-  color: white;
+  color: black;
 }
 
 .h2 {
@@ -72,12 +72,12 @@
   font-size: 2.5rem;
   line-height: 5rem;
   font-weight: 600;
-  color: white;
+  color: black;
 }
 
 /* about us page content */
 .h3 {
-  color: white;
+  color: black;
   text-align: center;
   font-style: normal;
   font-size: medium;
@@ -95,7 +95,7 @@
 
 /* text on card */
 .text1 {
-  color: white;
+  color: black;
   margin-top: 20px;
   margin-bottom: 50px;
   text-align: center;

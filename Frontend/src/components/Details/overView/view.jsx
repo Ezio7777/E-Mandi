@@ -11,6 +11,7 @@ import CartBtn from "../CartBtn/cartBtn";
 const View = (props) => {
   const role = localStorage.getItem("role");
   const data = props.data;
+  console.log(data);
 
   const zoomSliderBig = useRef();
   var settings2 = {
@@ -96,37 +97,47 @@ const View = (props) => {
 
         <p>{data.description}</p>
 
-        {weight !== undefined && weight.length !== 0 && (
-          <div className="productSize d-flex align-items-center">
-            <span>Size / Weight:</span>
-            <ul className="list list-inline mb-0 pl-4">
-              {weight.map((item, index) => {
-                return (
-                  <li className="list-inline-item">
-                    <a
-                      className={`tag ${activeSize === index ? "active" : ""}`}
-                      onClick={() => isActive(index)}
-                    >
-                      {item}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
+        {data.CurQuantity >= 2 ? (
+          <>
+            {weight !== undefined && weight.length !== 0 && (
+              <div className="productSize d-flex align-items-center">
+                <span>Size / Weight:</span>
+                <ul className="list list-inline mb-0 pl-4">
+                  {weight.map((item, index) => {
+                    return (
+                      <li className="list-inline-item">
+                        <a
+                          className={`tag ${
+                            activeSize === index ? "active" : ""
+                          }`}
+                          onClick={() => isActive(index)}
+                        >
+                          {item}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
 
-        {/* Cart Button */}
-        {role === "buyer" && (
-          <div className="d-flex align-items-center">
-            <CartBtn
-              data={data}
-              price={price}
-              quantity={quantity}
-              sendQ={sendQuantity}
-              image={data.image}
-            />
-          </div>
+            {/* Cart Button */}
+            {role === "buyer" && (
+              <div className="d-flex align-items-center">
+                <CartBtn
+                  data={data}
+                  price={price}
+                  quantity={quantity}
+                  sendQ={sendQuantity}
+                  image={data.image}
+                />
+              </div>
+            )}
+          </>
+        ) : (
+          <button type="button" class="btn btn-outline-danger outofstock_btn">
+            Out Of Stock
+          </button>
         )}
       </div>
     </div>

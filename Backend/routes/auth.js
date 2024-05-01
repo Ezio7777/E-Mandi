@@ -107,7 +107,6 @@ router.post(
           phno: req.body.phno,
         });
       }
-
       const data = {
         id: user.id,
       };

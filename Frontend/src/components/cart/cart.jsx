@@ -53,6 +53,8 @@ const Cart = () => {
     getCartData();
   }, [token]);
 
+  console.log(data);
+
   //Delete a product from the cart
   const onRemove = (index) => {
     Swal.fire({
@@ -202,7 +204,7 @@ const Cart = () => {
 
                     <tbody>
                       {data.length !== 0 &&
-                        [...data].reverse().map((item, index) => {
+                        data.map((item, index) => {
                           return (
                             <tr>
                               <td width={"50%"}>
@@ -222,14 +224,8 @@ const Cart = () => {
                                     <Link to={`/product/${item.id}`}>
                                       <h4>{item.productName}</h4>
                                     </Link>
-                                    <Rating
-                                      name="half-rating-read"
-                                      value={parseFloat(1)}
-                                      precision={0.5}
-                                      readOnly
-                                    />
-                                    {item.rating}
-                                    <span className="">({parseFloat(1)})</span>
+
+                                    <p>{item.farmerName}</p>
                                   </div>
                                 </div>
                               </td>

@@ -67,6 +67,7 @@ function App() {
           element={
             <>
               <Navbar2 />
+              <About />
             </>
           }
         />
@@ -76,7 +77,6 @@ function App() {
             <>
               <Navbar2 />
               <ContactUs />
-              <Footer />
             </>
           }
         />
