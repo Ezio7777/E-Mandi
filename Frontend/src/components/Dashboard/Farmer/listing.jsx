@@ -115,13 +115,10 @@ const Listing = () => {
   const onList = async () => {
     try {
       if (
-        validateCity() &&
         validateDescription() &&
         validateName() &&
-        validatePin &&
         validatePrice() &&
-        validateQuantity() &&
-        validateState()
+        validateQuantity()
       ) {
         let image;
 
