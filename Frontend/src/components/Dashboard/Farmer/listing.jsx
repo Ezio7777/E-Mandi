@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import imgData from "../../../data/product_img_data";
+import BASE_URL from "../../../Server/base_url";
 
 const Listing = () => {
   const [name, setName] = useState("");
@@ -132,27 +133,24 @@ const Listing = () => {
           console.error(`Image not found for category: ${cat}`);
         }
 
-        const response = await fetch(
-          "http://localhost:4000/api/product/listing",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": localStorage.getItem("token"),
-            },
-            body: JSON.stringify({
-              productName: name,
-              quantity: quantity,
-              description: description,
-              price: price,
-              cat: cat,
-              state: state,
-              city: city,
-              pin: pin,
-              image: image,
-            }),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/product/listing`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            productName: name,
+            quantity: quantity,
+            description: description,
+            price: price,
+            cat: cat,
+            state: state,
+            city: city,
+            pin: pin,
+            image: image,
+          }),
+        });
 
         const json = await response.json();
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./inventory.css";
 import Swal from "sweetalert2";
+import BASE_URL from "../../../Server/base_url";
 
 const Inventory_edit = (props) => {
   let token = localStorage.getItem("token");
@@ -40,20 +41,17 @@ const Inventory_edit = (props) => {
   };
   const changePrice = async (id, Price) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/inventory/changePrice`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-          body: JSON.stringify({
-            id: id,
-            price: Price,
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/inventory/changePrice`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+        body: JSON.stringify({
+          id: id,
+          price: Price,
+        }),
+      });
       const json = await response.json();
       if (json.success) {
         props.getItems();
@@ -91,20 +89,17 @@ const Inventory_edit = (props) => {
   };
   const AddStock = async (id, stock) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/inventory/addStock`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-          body: JSON.stringify({
-            id: id,
-            quantity: stock,
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/inventory/addStock`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+        body: JSON.stringify({
+          id: id,
+          quantity: stock,
+        }),
+      });
       const json = await response.json();
       if (json.success) {
         props.getItems();
@@ -142,20 +137,17 @@ const Inventory_edit = (props) => {
   };
   const RemoveStock = async (id, stock) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/inventory/removeStock`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-          body: JSON.stringify({
-            id: id,
-            quantity: stock,
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/inventory/removeStock`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+        body: JSON.stringify({
+          id: id,
+          quantity: stock,
+        }),
+      });
       const json = await response.json();
       if (json.success) {
         props.getItems();

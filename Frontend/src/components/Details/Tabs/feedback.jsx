@@ -3,25 +3,23 @@ import "./feedback.css";
 import Swal from "sweetalert2";
 import Rating from "@mui/material/Rating";
 import User_img from "../../../data/user_img.png";
+import BASE_URL from "../../../Server/base_url";
 
 const Feedback = (props) => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/product/feedback",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": localStorage.getItem("token"),
-            },
-            body: JSON.stringify({
-              id: props.data,
-            }),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/product/feedback`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            id: props.data,
+          }),
+        });
         const json = await response.json();
         if (json.success) {
           setData(json.feedbacks);

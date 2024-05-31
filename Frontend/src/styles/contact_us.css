@@ -1,169 +1,119 @@
-.contact_us_body {
+.contact-us-body {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 85vh;
+  min-height: 85vh;
+  padding: 20px;
+  background-color: #f8f9fa;
 }
 
-/* -----------icons---------- */
-
+/* Icons */
 .footer-icons {
-  width: 400px;
-  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  background-color: rgba(17, 24, 39, 1);
-  border-radius: 20px;
 }
 
 .footer-icons a {
   color: #23c686;
   margin: 0 15px;
-  font-size: 24px;
-  transition: color 0.3s;
+  font-size: 2rem;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .footer-icons a:hover {
   color: #1fad74;
+  transform: scale(1.1);
 }
 
-/* ----------form------------ */
-
+/* Form */
 .form-container {
-  margin-top: 75px;
-  width: 500px;
-  border-radius: 0.75rem;
-  background-color: rgba(17, 24, 39, 1);
-  padding: 2rem;
-  color: rgba(243, 244, 246, 1);
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 0px !important;
 }
 
 .title {
   text-align: center;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 2rem;
   font-weight: 700;
+  color: #343a40;
+  margin-bottom: 20px;
 }
 
 .form {
-  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-group {
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
 .input-group label {
   display: block;
-  color: rgba(156, 163, 175, 1);
-  margin-bottom: 4px;
+  color: #6b7280;
+  margin-bottom: 8px;
 }
 
-.input-group input {
+.input-group input,
+.input-group textarea {
   width: 100%;
-  border-radius: 0.375rem;
-  border: 1px solid rgba(55, 65, 81, 1);
-  outline: 0;
-  background-color: rgba(17, 24, 39, 1);
-  padding: 0.75rem 1rem;
-  color: rgba(243, 244, 246, 1);
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9fafb;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.input-group input:focus {
+.input-group input:focus,
+.input-group textarea:focus {
   border-color: #23c686;
+  box-shadow: 0 0 0 3px rgba(35, 198, 134, 0.2);
 }
 
-.forgot {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  color: rgba(156, 163, 175, 1);
-  margin: 8px 0 14px 0;
+.input-group textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
-.forgot a,
-.signup a {
-  color: rgba(243, 244, 246, 1);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.forgot a:hover,
-.signup a:hover {
-  text-decoration: underline #23c686;
-}
-
-.sign {
-  display: block;
-  width: 100%;
+.submit-button {
   background-color: #23c686;
-  padding: 0.75rem;
-  text-align: center;
-  color: rgba(17, 24, 39, 1);
+  color: #fff;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 1.2rem;
   font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.social-message {
-  display: flex;
-  align-items: center;
-  padding-top: 1rem;
+.submit-button:hover {
+  background-color: #1fad74;
+  transform: translateY(-2px);
 }
 
-.line {
-  height: 1px;
-  flex: 1 1 0%;
-  background-color: rgba(55, 65, 81, 1);
+.submit-button:active {
+  transform: translateY(1px);
 }
 
-.social-message .message {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: rgba(156, 163, 175, 1);
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-}
-
-.social-icons .icon {
-  border-radius: 0.125rem;
-  padding: 0.75rem;
-  border: none;
-  background-color: transparent;
-  margin-left: 8px;
-}
-
-.social-icons .icon svg {
-  height: 1.25rem;
-  width: 1.25rem;
-  fill: #fff;
-}
-
-.signup {
-  text-align: center;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  color: rgba(156, 163, 175, 1);
-}
-
-/* Responsive for mobile */
-
+/* Responsive */
 @media (max-width: 768px) {
   .form-container {
-    width: 300px;
+    padding: 20px;
   }
+
   .footer-icons {
-    width: 300px;
+    margin-bottom: 30px;
   }
 }

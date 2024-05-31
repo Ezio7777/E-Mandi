@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./check.css";
+import BASE_URL from "../../Server/base_url";
 
 import Swal from "sweetalert2";
 
@@ -155,7 +156,7 @@ const Checkout = () => {
           shipping: shipping,
         });
       });
-      const response = await fetch("http://localhost:4000/api/order/place", {
+      const response = await fetch(`${BASE_URL}/api/order/place`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

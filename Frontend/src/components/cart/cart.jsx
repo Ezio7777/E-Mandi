@@ -6,6 +6,7 @@ import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Swal from "sweetalert2";
+import BASE_URL from "../../Server/base_url";
 
 import { useNavigate } from "react-router-dom";
 
@@ -22,16 +23,13 @@ const Cart = () => {
     // Fetch data from your backend API
     const getCartData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/cart/checkout",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": token,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/cart/checkout`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+          },
+        });
         const json = await response.json();
         setData(json);
         let total = 0;
@@ -73,16 +71,13 @@ const Cart = () => {
   };
   const deleteItem = async (index) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/cart/deleteOne/${index}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/cart/deleteOne/${index}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
       const json = await response.json();
       console.log(json);
       setData(json);
@@ -126,7 +121,7 @@ const Cart = () => {
   };
   const emptyCart = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/cart/emptyCart`, {
+      const response = await fetch(`${BASE_URL}/api/cart/emptyCart`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

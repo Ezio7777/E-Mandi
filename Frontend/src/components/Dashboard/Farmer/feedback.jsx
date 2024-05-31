@@ -3,6 +3,7 @@ import "./feedback.css";
 import Swal from "sweetalert2";
 import Rating from "@mui/material/Rating";
 import User_img from "../../../data//user_img.png";
+import BASE_URL from "../../../Server/base_url";
 
 const Feedback = () => {
   let token = localStorage.getItem("token");
@@ -11,16 +12,13 @@ const Feedback = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/feedback/show",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": token,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/feedback/show`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+          },
+        });
         const json = await response.json();
         console.log(json.feedback);
         setData(json.feedback);

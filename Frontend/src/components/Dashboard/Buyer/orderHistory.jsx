@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./orderHistory.css";
 import Swal from "sweetalert2";
+import BASE_URL from "../../../Server/base_url";
 
 const History = () => {
   let token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ const History = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/history/show", {
+        const response = await fetch(`${BASE_URL}/api/history/show`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

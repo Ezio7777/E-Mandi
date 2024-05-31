@@ -3,6 +3,7 @@ import "./listing.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../../../Server/base_url";
 
 const Setting = () => {
   const [name, setName] = useState("");
@@ -99,24 +100,21 @@ const Setting = () => {
         validateState() &&
         validatePHno()
       ) {
-        const response = await fetch(
-          "http://localhost:4000/api/update/profile",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": localStorage.getItem("token"),
-            },
-            body: JSON.stringify({
-              role: localStorage.getItem("role"),
-              name: name,
-              PHno: PHno,
-              state: state,
-              city: city,
-              pin: pin,
-            }),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/update/profile`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            role: localStorage.getItem("role"),
+            name: name,
+            PHno: PHno,
+            state: state,
+            city: city,
+            pin: pin,
+          }),
+        });
         const json = await response.json();
         console.log(json);
         if (json.success) {

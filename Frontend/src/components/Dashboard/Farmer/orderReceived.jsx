@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./orderReceived.css";
 import Swal from "sweetalert2";
 import Status from "./order_status.jsx";
+import BASE_URL from "../../../Server/base_url";
 
 const Order = () => {
   let token = localStorage.getItem("token");
@@ -11,16 +12,13 @@ const Order = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/orderReceived/show",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": token,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/orderReceived/show`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+          },
+        });
         const json = await response.json();
         setData(json.orders);
       } catch (error) {
@@ -32,16 +30,13 @@ const Order = () => {
   }, []);
   const getOrders = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:4000/api/orderReceived/show",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/orderReceived/show`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
       const json = await response.json();
       setData(json.orders);
     } catch (error) {

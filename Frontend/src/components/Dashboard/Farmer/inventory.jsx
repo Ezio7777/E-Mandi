@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Swal from "sweetalert2";
 import EditStockPrice from "./inventory_edit";
+import BASE_URL from "../../../Server/base_url";
 
 const Dashboard = () => {
   let token = localStorage.getItem("token");
@@ -15,16 +16,13 @@ const Dashboard = () => {
   useEffect(() => {
     const getItems = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/inventory/show",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": token,
-            },
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/inventory/show`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": token,
+          },
+        });
         const json = await response.json();
         setData(json.product);
         console.log(data); // Handle the fetched data here
@@ -37,7 +35,7 @@ const Dashboard = () => {
   }, []);
   const getItems = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/inventory/show", {
+      const response = await fetch(`${BASE_URL}/api/inventory/show`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -75,16 +73,13 @@ const Dashboard = () => {
   }; //
   const onEmptyInventory = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:4000/api/inventory/empty",
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/inventory/empty`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
       const json = await response.json();
       console.log(json); // Handle the fetched data here
     } catch (error) {
@@ -111,7 +106,7 @@ const Dashboard = () => {
   const onRemoveOne = async (index) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/inventory/removeOne/${index}`,
+        `${BASE_URL}/api/inventory/removeOne/${index}`,
         {
           method: "DELETE",
           headers: {

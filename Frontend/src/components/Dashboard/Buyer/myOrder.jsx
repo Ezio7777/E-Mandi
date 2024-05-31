@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./myOrder.css";
 import Swal from "sweetalert2";
+import BASE_URL from "../../../Server/base_url";
 
 const Order = () => {
   let token = localStorage.getItem("token");
@@ -10,7 +11,7 @@ const Order = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/MyOrder/show", {
+        const response = await fetch(`${BASE_URL}/api/MyOrder/show`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -46,16 +47,13 @@ const Order = () => {
   }; //
   const onRemoveOne = async (index) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/myOrder/cancel/${index}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/myOrder/cancel/${index}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
       const json = await response.json();
       setData(json.orders);
       if (json.success) {

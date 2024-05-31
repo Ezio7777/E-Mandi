@@ -5,6 +5,7 @@ import Tabs from "./Tabs/Tab.jsx";
 import Related from "./RelateProduct/related.jsx";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import "./details.css";
+import BASE_URL from "../../Server/base_url";
 
 const DetailsPage = () => {
   const location = useLocation();
@@ -13,19 +14,16 @@ const DetailsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/product/details",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": localStorage.getItem("token"),
-            },
-            body: JSON.stringify({
-              id: location.state.id,
-            }),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/product/details`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            id: location.state.id,
+          }),
+        });
         if (response.ok) {
           const json = await response.json();
           setData(json.details);

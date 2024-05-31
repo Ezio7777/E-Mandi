@@ -2,11 +2,11 @@ const productImageData = {
   vegetable: {
     all: "https://t3.ftcdn.net/jpg/00/47/14/34/240_F_47143409_j3EkutIric45p2ulxp6O8rXTeXimnIWN.jpg",
     onion:
-      "https://t4.ftcdn.net/jpg/02/46/63/85/240_F_246638516_ThBoK7W98wU4Fbfs9t1pTXALCNAKBLIU.jpg",
+      "https://www.jiomart.com/images/product/original/590003516/potato-per-kg-product-images-o590003516-p590003516-0-202203170642.jpg?im=Resize=(420,420)s",
     potato:
       "https://www.jiomart.com/images/product/original/590003516/potato-per-kg-product-images-o590003516-p590003516-0-202203170642.jpg?im=Resize=(420,420)",
     carrot:
-      "https://www.jiomart.com/images/product/original/590000264/carrot-red-per-kg-product-images-o590000264-p590000264-0-202203151749.jpg?im=Resize=(420,420)",
+      "https://www.bigbasket.com/media/uploads/p/m/10000270_14-fresho-carrot-ooty.jpg",
     tomato:
       "https://www.jiomart.com/images/product/original/590003517/tomato-1-kg-product-images-o590003517-p590003517-0-202203170629.jpg?im=Resize=(420,420)",
     corn: "https://www.jiomart.com/images/product/original/590008027/sweet-corn-2-pcs-approx-500-g-720-g-product-images-o590008027-p590008027-0-202204262007.jpg?im=Resize=(420,420)",

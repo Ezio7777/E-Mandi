@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./orderReceived.css";
 import Swal from "sweetalert2";
+import BASE_URL from "../../../Server/base_url";
 
 const Order_status = (props) => {
   const item = props.data;
@@ -56,21 +57,18 @@ const Order_status = (props) => {
 
   const updateStatus = async (id, status, OTP) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/orderReceived/status`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-          body: JSON.stringify({
-            id: id,
-            status: status,
-            OTP: OTP,
-          }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/orderReceived/status`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+        body: JSON.stringify({
+          id: id,
+          status: status,
+          OTP: OTP,
+        }),
+      });
       const json = await response.json();
       if (json.success) {
         console.log(json.status);
@@ -111,16 +109,13 @@ const Order_status = (props) => {
   }; //
   const onRemoveOne = async (index) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/myOrder/cancel/${index}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": token,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/myOrder/cancel/${index}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
       const json = await response.json();
       props.getOrders();
       if (json.success) {

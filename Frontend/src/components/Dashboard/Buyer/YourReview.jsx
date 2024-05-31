@@ -3,6 +3,7 @@ import "./YourReview.css";
 import Swal from "sweetalert2";
 import Rating from "@mui/material/Rating";
 import User_img from "../../../data//user_img.png";
+import BASE_URL from "../../../Server/base_url";
 
 const YourReview = () => {
   let token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ const YourReview = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/review/show", {
+        const response = await fetch(`${BASE_URL}/api/review/show`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

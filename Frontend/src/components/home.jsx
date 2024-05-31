@@ -5,7 +5,7 @@ import Hero from "./Hero/hero";
 import Product from "./product/product";
 import Top from "./TopBar/top";
 import Nav from "./Navbar/nav";
-import Key from "../Key/key";
+import BASE_URL from "../Server/base_url";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,10 +20,15 @@ const Home = () => {
   const [dal, setDal] = useState([]);
 
   useEffect(() => {
+    if (!token) {
+      navigate("/signup");
+      return;
+    }
+
     // Fetch data from your backend API
     const fetchData = async () => {
       try {
-        const response = await fetch(Key.home, {
+        const response = await fetch(`${BASE_URL}/api/product/view`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -49,6 +54,9 @@ const Home = () => {
         });
         let dal = json.filter((item) => {
           return item.cat === "dal";
+        });
+        let flours = json.filter((item) => {
+          return item.cat === "flours";
         });
         setTop(top);
         setFruit(fruit);

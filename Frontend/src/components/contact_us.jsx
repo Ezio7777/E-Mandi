@@ -1,9 +1,9 @@
-import "../styles/contact_us.css";
 import React, { useRef } from "react";
+import "../styles/contact_us.css";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
-const Contact_us = () => {
+const ContactUs = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -35,21 +35,36 @@ const Contact_us = () => {
   };
 
   return (
-    <div className="container contact_us_body">
+    <div className="container contact-us-body">
       {/* icons */}
-      <div class="footer-icons">
-        <a href="https://github.com/Ezio7777/Trevelista">
-          <i class="fab fa-github"></i>
+      <div className="footer-icons">
+        <a
+          href="https://github.com/Ezio7777/E-Mandi"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-github"></i>
         </a>
-
-        <a href="https://www.instagram.com/soumyaa__22">
-          <i class="fab fa-instagram"></i>
+        <a
+          href="https://www.instagram.com/sunitxg_007"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/in/soumya-gupta-522a02237">
-          <i class="fab fa-linkedin"></i>
+        <a
+          href="https://www.linkedin.com/in/sunit-pal-1a792824a/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-linkedin"></i>
         </a>
-        <a href="https://www.facebook.com/">
-          <i class="fab fa-facebook"></i>
+        <a
+          href="https://www.facebook.com/Sunit Pal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-facebook"></i>
         </a>
       </div>
 
@@ -58,33 +73,40 @@ const Contact_us = () => {
         <p className="title">Contact Us</p>
         <form className="form" ref={form} onSubmit={sendEmail}>
           <div className="input-group">
-            <label for="username">Name</label>
-            <input type="text" name="user_name" id="username" placeholder="" />
+            <label htmlFor="username">Name</label>
+            <input
+              type="text"
+              name="user_name"
+              id="username"
+              placeholder="Your Name"
+              required
+            />
           </div>
           <div className="input-group">
-            <label for="username">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="user_email"
-              id="username"
-              placeholder=""
+              id="email"
+              placeholder="Your Email"
+              required
             />
           </div>
           <div className="input-group">
-            <label for="password">Message</label>
-            <input
-              type="text"
+            <label htmlFor="message">Message</label>
+            <textarea
               name="message"
-              id="password"
+              id="message"
               className="message"
-              placeholder=""
-            />
+              placeholder="Your Message"
+              required
+            ></textarea>
           </div>
-          <input className="sign" type="submit" value="Send" />
+          <input className="submit-button" type="submit" value="Send" />
         </form>
       </div>
     </div>
   );
 };
 
-export default Contact_us;
+export default ContactUs;

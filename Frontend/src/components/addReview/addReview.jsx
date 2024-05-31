@@ -7,6 +7,8 @@ import "./addReview.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../../Server/base_url";
+
 const ReviewForm = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,27 +42,24 @@ const ReviewForm = (props) => {
   const onSubmit = async () => {
     if (reviewFields.rating > 0 && reviewFields.review.length > 0) {
       try {
-        const response = await fetch(
-          `http://localhost:4000/api/review/submit`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": localStorage.getItem("token"),
-            },
-            body: JSON.stringify({
-              rating: reviewFields.rating,
-              review: reviewFields.review,
-              productId: item.productId,
-              orderId: item._id,
-              farmer_id: item.farmer_id,
-              product_name: item.productName,
-              quantity: item.quantity,
-              price: item.price,
-              image: item.image,
-            }),
-          }
-        );
+        const response = await fetch(`${BASE_URL}/api/review/submit`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            rating: reviewFields.rating,
+            review: reviewFields.review,
+            productId: item.productId,
+            orderId: item._id,
+            farmer_id: item.farmer_id,
+            product_name: item.productName,
+            quantity: item.quantity,
+            price: item.price,
+            image: item.image,
+          }),
+        });
 
         const json = await response.json();
         if (json.success) {

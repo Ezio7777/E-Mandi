@@ -6,6 +6,7 @@ import "../details.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../../../Server/base_url";
 
 const CartBtn = (props) => {
   const data = props.data;
@@ -19,7 +20,7 @@ const CartBtn = (props) => {
   const [isAlreadyAddedInCart, setIsAlreadyAddedInCart] = useState(false);
   const addToCart = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/api/cart/add`, {
+      const response = await fetch(`${BASE_URL}/api/cart/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

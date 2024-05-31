@@ -122,6 +122,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import BASE_URL from "../../Server/base_url";
 
 import "./navbar.css";
 
@@ -134,7 +135,7 @@ const Navigation = (props) => {
   const onSearch = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/search/show/${searchItem}`,
+        `${BASE_URL}/api/search/show/${searchItem}`,
         {
           method: "GET",
           headers: {

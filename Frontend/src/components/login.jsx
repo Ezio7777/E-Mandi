@@ -3,6 +3,7 @@ import "../styles/login.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import BASE_URL from "../Server/base_url";
 
 const Login = ({ loadUser, onRouteChange }) => {
   const [signInEmail, setSignInEmail] = useState("");
@@ -21,7 +22,7 @@ const Login = ({ loadUser, onRouteChange }) => {
   };
   const onSubmitLogIn = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/auth/login", {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: signInEmail, password: signInPassword }),
@@ -32,7 +33,7 @@ const Login = ({ loadUser, onRouteChange }) => {
         localStorage.setItem("token", json.authtoken);
         localStorage.setItem("role", json.role);
         handleClick();
-      } else if (json === "Invalid") {
+      } else {
         Swal.fire({
           icon: "warning",
           title: "Invalid Credentials",
