@@ -10,7 +10,7 @@ Router.get("/view", fetchUser, async (req, res) => {
     const buyer = await User.findById(req.user.id);
     const pin = buyer.pin;
 
-    const response = await Product.select();
+    const response = await Product.find().select();
 
     res.json(response);
   } catch (error) {
